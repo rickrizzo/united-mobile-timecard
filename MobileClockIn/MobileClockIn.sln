@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileClockIn", "MobileClockIn\MobileClockIn.csproj", "{F64E9913-25B1-4CC6-A8FF-5AC9D2906292}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F64E9913-25B1-4CC6-A8FF-5AC9D2906292}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{F64E9913-25B1-4CC6-A8FF-5AC9D2906292}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{F64E9913-25B1-4CC6-A8FF-5AC9D2906292}.Release|iPhone.ActiveCfg = Release|iPhone
+		{F64E9913-25B1-4CC6-A8FF-5AC9D2906292}.Release|iPhone.Build.0 = Release|iPhone
+		{F64E9913-25B1-4CC6-A8FF-5AC9D2906292}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{F64E9913-25B1-4CC6-A8FF-5AC9D2906292}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{F64E9913-25B1-4CC6-A8FF-5AC9D2906292}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{F64E9913-25B1-4CC6-A8FF-5AC9D2906292}.Debug|iPhone.Build.0 = Debug|iPhone
+	EndGlobalSection
+EndGlobal
