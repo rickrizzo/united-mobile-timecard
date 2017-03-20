@@ -1,0 +1,23 @@
+
+
+CREATE TABLE timeCard (
+	timeCardId int NOT NULL,
+	clockingIn boolean(3) NOT NULL,
+	location varchar(50) NOT NULL,
+	assignmentId int NOT NULL, 
+	isLate bit,
+	reason varchar(50),
+	employeeId int FOREIGN KEY REFERENCES employee(employeeId)
+);
+
+CREATE TABLE employee (
+	employeeId int NOT NULL,
+	firstName varchar(50) NOT NULL,
+	lastName varchar(50) NOT NULL,
+	PRIMARY KEY employeeId
+);
+
+CREATE TABLE device (
+	deviceId int NOT NULL,
+	employeeId int NOT NULL FOREIGN KEY REFERENCES employee(employeeId)
+);
