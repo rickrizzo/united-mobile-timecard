@@ -1,0 +1,22 @@
+package com.gess.fd.web.config;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+
+import com.gess.fd.ProfileConstant;
+
+@PropertySource({ "classpath:test.properties" })
+@Profile({ProfileConstant.UNIT_TEST})
+public class DatabaseConfigH2 extends DatabaseConfig {
+
+	@Bean
+	public DataSource dataSource() {
+		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
+	}
+
+}
