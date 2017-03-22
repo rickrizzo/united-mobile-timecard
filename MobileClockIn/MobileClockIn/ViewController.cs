@@ -1,5 +1,6 @@
 ﻿using System;
-
+using Foundation;
+using Security;
 using UIKit;
 
 namespace MobileClockIn
@@ -15,6 +16,9 @@ namespace MobileClockIn
 		{
 			base.ViewDidLoad();
 			// Perform any additional setup after loading the view, typically from a nib.
+
+			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
+
 		}
 
 		public override void DidReceiveMemoryWarning()
