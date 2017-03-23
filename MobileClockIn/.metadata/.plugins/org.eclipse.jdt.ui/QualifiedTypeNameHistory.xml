@@ -14,4 +14,9 @@
 <fullyQualifiedTypeName name="javax.persistence.JoinColumns"/>
 <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
 <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
+<fullyQualifiedTypeName name="ua.server.config.db.CreateDB"/>
+<fullyQualifiedTypeName name="ua.server.model.entity.Device"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="ua.server.model.entity.Employee"/>
 </qualifiedTypeNameHistroy>
