@@ -15,10 +15,19 @@ namespace MobileClockIn
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton ClockInButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView UpcomingEventsTable { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (ClockInButton != null) {
+                ClockInButton.Dispose ();
+                ClockInButton = null;
+            }
+
             if (UpcomingEventsTable != null) {
                 UpcomingEventsTable.Dispose ();
                 UpcomingEventsTable = null;
