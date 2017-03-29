@@ -13,8 +13,16 @@ namespace MobileClockIn
     [Register ("ViewController")]
     partial class ViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView UpcomingEventsTable { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (UpcomingEventsTable != null) {
+                UpcomingEventsTable.Dispose ();
+                UpcomingEventsTable = null;
+            }
         }
     }
 }
