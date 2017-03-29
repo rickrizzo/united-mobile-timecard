@@ -16,9 +16,16 @@ namespace MobileClockIn
 		{
 			base.ViewDidLoad();
 			// Perform any additional setup after loading the view, typically from a nib.
+<<<<<<< HEAD
 
 			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
 
+=======
+			ClockInButton.TouchUpInside += (sender, ea) =>
+			{
+				new UIAlertView("On Time", "You've clocked in.", null, "OK", null).Show();
+			};
+>>>>>>> feature/ui
 		}
 
 		public override void DidReceiveMemoryWarning()
