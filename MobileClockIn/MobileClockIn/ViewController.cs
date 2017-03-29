@@ -1,4 +1,5 @@
 ﻿using System;
+using CoreLocation;
 using Foundation;
 using Security;
 using UIKit;
@@ -7,11 +8,24 @@ namespace MobileClockIn
 {
 	public partial class ViewController : UIViewController
 	{
+
+		#region Computer Properties
+		public static bool UserInterfaceIdiomIsPhone
+		{
+			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+		}
+		public static LocationManager Manager { get; set; }
+		#endregion
+
+		#region Constructors
 		protected ViewController(IntPtr handle) : base(handle)
 		{
-			// Note: this .ctor should not contain any initialization logic.
+			Manager = new LocationManager();
+			Manager.StartLocationUpdates();
 		}
+		#endregion
 
+		#region View Lifecycle
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
@@ -19,12 +33,33 @@ namespace MobileClockIn
 
 			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
 
-		}
+			UIApplication.Notifications.ObserveDidBecomeActive((sender, args) =>
+			{
+				Manager.LocationUpdated += HandleLocationChanged;
+			});
 
+			UIApplication.Notifications.ObserveDidEnterBackground((sender, args) =>
+			{
+				Manager.LocationUpdated -= HandleLocationChanged;
+			});
+		}
+		#endregion
+
+		#region Public Methods
+		public void HandleLocationChanged(object sender, LocationUpdatedEventArgs e)
+		{
+			CLLocation location = e.Location;
+			Console.WriteLine("LOCATION DATA");
+			Console.WriteLine(location.Altitude + " meters");
+		}
+		#endregion
+
+		#region Override Methods
 		public override void DidReceiveMemoryWarning()
 		{
 			base.DidReceiveMemoryWarning();
 			// Release any cached data, images, etc that aren't in use.
 		}
+		#endregion
 	}
 }
