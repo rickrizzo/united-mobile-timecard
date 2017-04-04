@@ -42,7 +42,6 @@ namespace MobileClockIn
 			{
 				Manager.LocationUpdated -= HandleLocationChanged;
 			});
-
 		}
 		#endregion
 
@@ -60,6 +59,5 @@ namespace MobileClockIn
 			Console.WriteLine(location.Coordinate.Longitude.ToString() + ", " + location.Coordinate.Latitude.ToString());
 		}
 		#endregion
-
 	}
 }
