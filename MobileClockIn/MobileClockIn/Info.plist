@@ -37,5 +37,7 @@
 	<array>
 		<string>location</string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This application must have access to your location.</string>
 </dict>
 </plist>

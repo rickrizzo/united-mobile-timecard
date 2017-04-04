@@ -42,15 +42,7 @@ namespace MobileClockIn
 			{
 				Manager.LocationUpdated -= HandleLocationChanged;
 			});
-		}
-		#endregion
 
-		#region Public Methods
-		public void HandleLocationChanged(object sender, LocationUpdatedEventArgs e)
-		{
-			CLLocation location = e.Location;
-			Console.WriteLine("LOCATION DATA");
-			Console.WriteLine(location.Altitude + " meters");
 		}
 		#endregion
 
@@ -58,8 +50,16 @@ namespace MobileClockIn
 		public override void DidReceiveMemoryWarning()
 		{
 			base.DidReceiveMemoryWarning();
-			// Release any cached data, images, etc that aren't in use.
 		}
 		#endregion
+
+		#region Public Methods
+		public void HandleLocationChanged(object sender, LocationUpdatedEventArgs e)
+		{
+			CLLocation location = e.Location;
+			Console.WriteLine(location.Coordinate.Longitude.ToString() + ", " + location.Coordinate.Latitude.ToString());
+		}
+		#endregion
+
 	}
 }
