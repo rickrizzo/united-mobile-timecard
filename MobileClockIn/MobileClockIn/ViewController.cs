@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Foundation;
 using Security;
 using CoreLocation;
-using Foundation;
 using UIKit;
 
 namespace MobileClockIn
