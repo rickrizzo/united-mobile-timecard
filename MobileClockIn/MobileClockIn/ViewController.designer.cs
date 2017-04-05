@@ -17,12 +17,18 @@ namespace MobileClockIn
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton ClockInButton { get; set; }
         UIKit.UILabel CurrentShiftLabel { get; set; }
+        UIKit.UITableView UpcomingEventsTable { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
             if (ClockInButton != null) {
                 ClockInButton.Dispose ();
                 ClockInButton = null;
+            }
+
+            if (UpcomingEventsTable != null) {
+                UpcomingEventsTable.Dispose ();
+                UpcomingEventsTable = null;
             }
 
             if (CurrentShiftLabel != null) {

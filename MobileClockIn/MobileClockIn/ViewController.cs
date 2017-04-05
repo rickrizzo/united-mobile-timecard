@@ -66,9 +66,6 @@ namespace MobileClockIn
 			Add(table);
 
 			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
-
-			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
-
 			UIApplication.Notifications.ObserveDidBecomeActive((sender, args) =>
 			{
 				Manager.LocationUpdated += HandleLocationChanged;

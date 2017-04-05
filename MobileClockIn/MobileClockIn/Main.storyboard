@@ -162,10 +162,7 @@
                         </variation>
                     </view>
                     <connections>
-
-                        <outlet property="ClockInButton" destination="70" id="name-outlet-70"/>
-                        <outlet property="CurrentShiftLabel" destination="181" id="name-outlet-181"/>
-
+			<outlet property="ClockInButton" destination="70" id="name-outlet-70"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
