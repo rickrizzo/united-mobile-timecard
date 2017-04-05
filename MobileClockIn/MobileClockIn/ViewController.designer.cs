@@ -19,7 +19,7 @@ namespace MobileClockIn
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView UpcomingEventsTable { get; set; }
+        UIKit.UILabel CurrentShiftLabel { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
@@ -28,9 +28,9 @@ namespace MobileClockIn
                 ClockInButton = null;
             }
 
-            if (UpcomingEventsTable != null) {
-                UpcomingEventsTable.Dispose ();
-                UpcomingEventsTable = null;
+            if (CurrentShiftLabel != null) {
+                CurrentShiftLabel.Dispose ();
+                CurrentShiftLabel = null;
             }
         }
     }
