@@ -1,12 +1,11 @@
 ﻿using System;
-<<<<<<< HEAD
 using CoreGraphics;
 using System.IO;
 using System.Collections.Generic;
-=======
 using Foundation;
 using Security;
->>>>>>> develop
+using CoreLocation;
+using Foundation;
 using UIKit;
 
 namespace MobileClockIn
@@ -16,11 +15,23 @@ namespace MobileClockIn
 		UITableView table;
 		UIAlertView lateClockIn;
 
+		#region Computer Properties
+		public static bool UserInterfaceIdiomIsPhone
+		{
+			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+		}
+		public static LocationManager Manager { get; set; }
+		#endregion
+
+		#region Constructors
 		protected ViewController(IntPtr handle) : base(handle)
 		{
-			// Note: this .ctor should not contain any initialization logic.
+			Manager = new LocationManager();
+			Manager.StartLocationUpdates();
 		}
+		#endregion
 
+		#region View Lifecycle
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
@@ -38,7 +49,7 @@ namespace MobileClockIn
 			lateClockIn.AddButton("OK");
 			lateClockIn.GetTextField(0).Placeholder = "Provide Reason";
 			// Perform any additional setup after loading the view, typically from a nib.
-<<<<<<< HEAD
+
 			ClockInButton.TouchUpInside += (sender, ea) =>
 			{
 				lateClockIn.Show();
@@ -54,24 +65,27 @@ namespace MobileClockIn
 			table.AutoresizingMask = UIViewAutoresizing.All;
 			CreateTableItems();
 			Add(table);
-=======
-<<<<<<< HEAD
 
 			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
 
-=======
-			ClockInButton.TouchUpInside += (sender, ea) =>
-			{
-				new UIAlertView("On Time", "You've clocked in.", null, "OK", null).Show();
-			};
->>>>>>> feature/ui
->>>>>>> develop
-		}
+			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
 
+			UIApplication.Notifications.ObserveDidBecomeActive((sender, args) =>
+			{
+				Manager.LocationUpdated += HandleLocationChanged;
+			});
+
+			UIApplication.Notifications.ObserveDidEnterBackground((sender, args) =>
+			{
+				Manager.LocationUpdated -= HandleLocationChanged;
+			});
+		}
+		#endregion
+
+		#region Override Methods
 		public override void DidReceiveMemoryWarning()
 		{
 			base.DidReceiveMemoryWarning();
-			// Release any cached data, images, etc that aren't in use.
 		}
 
 		protected void CreateTableItems()
@@ -87,5 +101,14 @@ namespace MobileClockIn
 
 			table.Source = new TableSource(assignments, this);
 		}
+		#endregion
+
+		#region Public Methods
+		public void HandleLocationChanged(object sender, LocationUpdatedEventArgs e)
+		{
+			CLLocation location = e.Location;
+			Console.WriteLine(location.Coordinate.Longitude.ToString() + ", " + location.Coordinate.Latitude.ToString());
+		}
+		#endregion
 	}
 }

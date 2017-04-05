@@ -168,6 +168,9 @@
 =======
                         <outlet property="UpcomingEventsTable" destination="195" id="name-outlet-195"/>
                         <outlet property="ClockInButton" destination="70" id="name-outlet-70"/>
+<<<<<<< HEAD
+>>>>>>> develop
+=======
 >>>>>>> develop
                     </connections>
                 </viewController>
