@@ -1,4 +1,5 @@
 ﻿using System;
+using CoreLocation;
 using Foundation;
 using Security;
 using UIKit;
@@ -7,31 +8,62 @@ namespace MobileClockIn
 {
 	public partial class ViewController : UIViewController
 	{
+
+		#region Computer Properties
+		public static bool UserInterfaceIdiomIsPhone
+		{
+			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+		}
+		public static LocationManager Manager { get; set; }
+		#endregion
+
+		#region Constructors
 		protected ViewController(IntPtr handle) : base(handle)
 		{
-			// Note: this .ctor should not contain any initialization logic.
+			Manager = new LocationManager();
+			Manager.StartLocationUpdates();
 		}
+		#endregion
 
+		#region View Lifecycle
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 			// Perform any additional setup after loading the view, typically from a nib.
-<<<<<<< HEAD
 
 			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
 
-=======
+
 			ClockInButton.TouchUpInside += (sender, ea) =>
 			{
 				new UIAlertView("On Time", "You've clocked in.", null, "OK", null).Show();
 			};
->>>>>>> feature/ui
-		}
 
+			UIApplication.Notifications.ObserveDidBecomeActive((sender, args) =>
+			{
+				Manager.LocationUpdated += HandleLocationChanged;
+			});
+
+			UIApplication.Notifications.ObserveDidEnterBackground((sender, args) =>
+			{
+				Manager.LocationUpdated -= HandleLocationChanged;
+			});
+		}
+		#endregion
+
+		#region Override Methods
 		public override void DidReceiveMemoryWarning()
 		{
 			base.DidReceiveMemoryWarning();
-			// Release any cached data, images, etc that aren't in use.
 		}
+		#endregion
+
+		#region Public Methods
+		public void HandleLocationChanged(object sender, LocationUpdatedEventArgs e)
+		{
+			CLLocation location = e.Location;
+			Console.WriteLine(location.Coordinate.Longitude.ToString() + ", " + location.Coordinate.Latitude.ToString());
+		}
+		#endregion
 	}
 }
