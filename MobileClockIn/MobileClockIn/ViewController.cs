@@ -1,7 +1,12 @@
 ﻿using System;
+<<<<<<< HEAD
 using CoreGraphics;
 using System.IO;
 using System.Collections.Generic;
+=======
+using Foundation;
+using Security;
+>>>>>>> develop
 using UIKit;
 
 namespace MobileClockIn
@@ -33,6 +38,7 @@ namespace MobileClockIn
 			lateClockIn.AddButton("OK");
 			lateClockIn.GetTextField(0).Placeholder = "Provide Reason";
 			// Perform any additional setup after loading the view, typically from a nib.
+<<<<<<< HEAD
 			ClockInButton.TouchUpInside += (sender, ea) =>
 			{
 				lateClockIn.Show();
@@ -48,6 +54,18 @@ namespace MobileClockIn
 			table.AutoresizingMask = UIViewAutoresizing.All;
 			CreateTableItems();
 			Add(table);
+=======
+<<<<<<< HEAD
+
+			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
+
+=======
+			ClockInButton.TouchUpInside += (sender, ea) =>
+			{
+				new UIAlertView("On Time", "You've clocked in.", null, "OK", null).Show();
+			};
+>>>>>>> feature/ui
+>>>>>>> develop
 		}
 
 		public override void DidReceiveMemoryWarning()
