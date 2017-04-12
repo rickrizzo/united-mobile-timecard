@@ -1,27 +1,18 @@
 ﻿using System;
-<<<<<<< HEAD
-using CoreLocation;
-using Foundation;
-using Security;
-=======
 using CoreGraphics;
 using System.IO;
 using System.Collections.Generic;
 using Foundation;
 using Security;
 using CoreLocation;
->>>>>>> feature/ui
 using UIKit;
 
 namespace MobileClockIn
 {
 	public partial class ViewController : UIViewController
 	{
-<<<<<<< HEAD
-=======
 		UITableView table;
 		UIAlertView lateClockIn;
->>>>>>> feature/ui
 
 		#region Computer Properties
 		public static bool UserInterfaceIdiomIsPhone
@@ -58,16 +49,6 @@ namespace MobileClockIn
 			lateClockIn.GetTextField(0).Placeholder = "Provide Reason";
 			// Perform any additional setup after loading the view, typically from a nib.
 
-<<<<<<< HEAD
-			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
-
-
-			ClockInButton.TouchUpInside += (sender, ea) =>
-			{
-				new UIAlertView("On Time", "You've clocked in.", null, "OK", null).Show();
-			};
-
-=======
 			ClockInButton.TouchUpInside += (sender, ea) =>
 			{
 				lateClockIn.Show();
@@ -85,7 +66,6 @@ namespace MobileClockIn
 			Add(table);
 
 			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
->>>>>>> feature/ui
 			UIApplication.Notifications.ObserveDidBecomeActive((sender, args) =>
 			{
 				Manager.LocationUpdated += HandleLocationChanged;
@@ -103,8 +83,6 @@ namespace MobileClockIn
 		{
 			base.DidReceiveMemoryWarning();
 		}
-<<<<<<< HEAD
-=======
 
 		protected void CreateTableItems()
 		{
@@ -119,7 +97,6 @@ namespace MobileClockIn
 
 			table.Source = new TableSource(assignments, this);
 		}
->>>>>>> feature/ui
 		#endregion
 
 		#region Public Methods

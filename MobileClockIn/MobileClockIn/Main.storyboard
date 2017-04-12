@@ -162,12 +162,7 @@
                         </variation>
                     </view>
                     <connections>
-<<<<<<< HEAD
-                        <outlet property="UpcomingEventsTable" destination="195" id="name-outlet-195"/>
-                        <outlet property="ClockInButton" destination="70" id="name-outlet-70"/>
-=======
-			<outlet property="ClockInButton" destination="70" id="name-outlet-70"/>
->>>>>>> feature/ui
+						<outlet property="ClockInButton" destination="70" id="name-outlet-70"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
