@@ -83,7 +83,7 @@
                                     </mask>
                                 </variation>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHIFT 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="181">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHIFT 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="181">
                                 <rect key="frame" x="0.0" y="64" width="414" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="184"/>
@@ -106,63 +106,6 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    Upcoming Assignments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="194">
-                                <rect key="frame" x="0.0" y="243" width="414" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="290" id="199">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="414"/>
-                                    </constraint>
-                                    <constraint firstAttribute="height" constant="29" id="201">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="50"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="199"/>
-                                        <exclude reference="201"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    <mask key="constraints">
-                                        <include reference="199"/>
-                                        <include reference="201"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="195">
-                                <rect key="frame" x="0.0" y="293" width="414" height="321"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="202"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="321" id="203"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="196">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="196" id="197">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="202"/>
-                                        <exclude reference="203"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="202"/>
-                                        <include reference="203"/>
-                                    </mask>
-                                </variation>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -178,26 +121,15 @@
                             <constraint firstItem="181" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="185"/>
                             <constraint firstItem="181" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="187"/>
                             <constraint firstItem="181" firstAttribute="top" secondItem="67" secondAttribute="bottom" id="190"/>
-                            <constraint firstItem="194" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="198"/>
-                            <constraint firstItem="194" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="200"/>
-                            <constraint firstItem="195" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="204"/>
-                            <constraint firstItem="195" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="205"/>
-                            <constraint firstItem="195" firstAttribute="top" secondItem="194" secondAttribute="bottom" id="206"/>
-                            <constraint firstItem="194" firstAttribute="top" secondItem="181" secondAttribute="bottom" constant="129" id="211"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="181"/>
-                                <exclude reference="194"/>
-                                <exclude reference="195"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="185"/>
                                 <exclude reference="187"/>
                                 <exclude reference="190"/>
-                                <exclude reference="198"/>
-                                <exclude reference="200"/>
-                                <exclude reference="211"/>
                                 <exclude reference="164"/>
                                 <exclude reference="165"/>
                                 <exclude reference="166"/>
@@ -207,24 +139,16 @@
                                 <exclude reference="176"/>
                                 <exclude reference="177"/>
                                 <exclude reference="178"/>
-                                <exclude reference="204"/>
-                                <exclude reference="205"/>
-                                <exclude reference="206"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="181"/>
-                                <include reference="194"/>
-                                <include reference="195"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="185"/>
                                 <include reference="187"/>
                                 <include reference="190"/>
-                                <include reference="198"/>
-                                <include reference="200"/>
-                                <include reference="211"/>
                                 <include reference="164"/>
                                 <include reference="165"/>
                                 <include reference="166"/>
@@ -234,15 +158,16 @@
                                 <include reference="176"/>
                                 <include reference="177"/>
                                 <include reference="178"/>
-                                <include reference="204"/>
-                                <include reference="205"/>
-                                <include reference="206"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+<<<<<<< HEAD
                         <outlet property="UpcomingEventsTable" destination="195" id="name-outlet-195"/>
                         <outlet property="ClockInButton" destination="70" id="name-outlet-70"/>
+=======
+			<outlet property="ClockInButton" destination="70" id="name-outlet-70"/>
+>>>>>>> feature/ui
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -253,4 +178,22 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedScreenMetrics key="destination" type="retina55"/>
     </simulatedMetricsContainer>
+    <resources>
+        <image name="Default-568h.png" width="320" height="568"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Icon.png" width="57" height="57"/>
+        <image name="Images/Bulbs.jpg" width="43" height="43"/>
+        <image name="Images/Flower Buds.jpg" width="43" height="43"/>
+        <image name="Images/Fruits.jpg" width="43" height="43"/>
+        <image name="Images/Legumes.jpg" width="43" height="43"/>
+        <image name="Images/Tubers.jpg" width="43" height="43"/>
+        <image name="Images/Vegetables.jpg" width="43" height="43"/>
+        <image name="Images/Icons/29_icon.png" width="29" height="29"/>
+        <image name="Images/Icons/50_icon.png" width="50" height="50"/>
+        <image name="Images/Icons/57_icon.png" width="57" height="57"/>
+        <image name="Images/Icons/58_icon.png" width="58" height="58"/>
+        <image name="Images/Icons/72_icon.png" width="72" height="72"/>
+        <image name="Images/Icons/114_icon.png" width="114" height="114"/>
+        <image name="Images/Icons/512_icon.png" width="512" height="512"/>
+    </resources>
 </document>
