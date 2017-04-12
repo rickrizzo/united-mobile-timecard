@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using System;
+using Foundation;
 using UIKit;
 
 namespace MobileClockIn
@@ -16,11 +17,39 @@ namespace MobileClockIn
 			set;
 		}
 
+		public UIStoryboard MainStoryboard
+		{
+			get { return UIStoryboard.FromName("Main", NSBundle.MainBundle); }
+		}
+
+		public UIViewController GetViewController(UIStoryboard storyboard, string viewControllerName)
+		{
+			return storyboard.InstantiateViewController(viewControllerName); 
+		}
+
+		public void SetRootViewController(UIViewController rootViewController, bool animate)
+		{
+			if (animate)
+			{
+				var transitionType = UIViewAnimationOptions.TransitionFlipFromRight;
+
+				Window.RootViewController = rootViewController;
+				UIView.Transition(Window, 0.5, transitionType,
+								  () => Window.RootViewController = rootViewController,
+								  null);
+			}
+			else
+			{
+				Window.RootViewController = rootViewController;
+			}
+		}
+
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
-
+			var loginViewController = GetViewController(MainStoryboard, "LoginViewController");
+			// SetRootViewController(
 			return true;
 		}
 
@@ -53,6 +82,12 @@ namespace MobileClockIn
 		public override void WillTerminate(UIApplication application)
 		{
 			// Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
+		}
+
+		private void LoginViewControllerOnSuccess(object sender, EventArgs e)
+		{
+			var loginViewController = GetViewController(MainStoryboard, "LoginViewController");
+			SetRootViewController(loginViewController, true);
 		}
 	}
 }
