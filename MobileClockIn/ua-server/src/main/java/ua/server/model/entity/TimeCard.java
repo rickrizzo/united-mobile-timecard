@@ -20,7 +20,7 @@ import org.hibernate.validator.Length;
 @Entity
 @Proxy(lazy = true)
 @Table(name = "timeCard")
-public class TimeCard implements Serializable {
+public class TimeCard implements Serializable, IEntity {
 
 	public TimeCard() {
 	}
@@ -31,6 +31,9 @@ public class TimeCard implements Serializable {
 	@GenericGenerator(name = "UA_SERVER_MODEL_ENTITY_TIMECARD_ID_GENERATOR", strategy = "increment")
 	private int timeCardId;
 
+	@Column(name="uuid", nullable=false, length=16)	
+	private byte[] uuid;	
+	
 	@Column(name = "clockingIn", nullable = false, length = 1)
 	private boolean clockingIn;
 
@@ -110,6 +113,16 @@ public class TimeCard implements Serializable {
 
 	public void setEmployee(ua.server.model.entity.Employee employee) {
 		this.employee = employee;
+	}
+
+	public void setId(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int getId() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -30,6 +30,9 @@ public class Device implements Serializable {
 	@GenericGenerator(name = "UA_SERVER_MODEL_ENTITY_DEVICE_ID_GENERATOR", strategy = "increment")
 	private int deviceId;
 
+	@Column(name="uuid", nullable=false, length=16)	
+	private byte[] uuid;	
+	
 	@ManyToOne(targetEntity = ua.server.model.entity.Employee.class, fetch = FetchType.LAZY)
 	@org.hibernate.annotations.Cascade({ org.hibernate.annotations.CascadeType.LOCK })
 	@JoinColumns({ @JoinColumn(name = "employeeId", referencedColumnName = "employeeId", nullable = false) })
@@ -52,6 +55,16 @@ public class Device implements Serializable {
 
 	public void setEmployee(ua.server.model.entity.Employee employee) {
 		this.employee = employee;
+	}
+
+	public void setId(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int getId() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

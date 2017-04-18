@@ -5,6 +5,7 @@
 	<item value="false" key="TypeHierarchyViewPart.linkeditors"/>
 	<item value="2" key="TypeHierarchyViewPart.hierarchyview"/>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item value="false" key="renameSubpackages"/>
 		<item value="false" key="updateQualifiedNames"/>
 		<item value="*" key="patterns"/>
 		<item value="false" key="updateSimilarElements"/>
@@ -18,11 +19,11 @@
 		<item value="false" key="expanded2"/>
 		<item value="false" key="expanded1"/>
 		<item value="false" key="expanded4"/>
-		<item value="false" key="expanded3"/>
+		<item value="true" key="expanded3"/>
 		<item value="false" key="expanded6"/>
 		<item value="false" key="expanded5"/>
 		<item value="false" key="expanded7"/>
-		<item value="true" key="expanded0"/>
+		<item value="false" key="expanded0"/>
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item value="2" key="layout"/>

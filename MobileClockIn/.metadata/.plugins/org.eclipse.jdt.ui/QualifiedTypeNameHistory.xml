@@ -3,12 +3,10 @@
 <fullyQualifiedTypeName name="javax.persistence.Entity"/>
 <fullyQualifiedTypeName name="org.hibernate.annotations.Proxy"/>
 <fullyQualifiedTypeName name="javax.persistence.Table"/>
-<fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="javax.persistence.Column"/>
 <fullyQualifiedTypeName name="javax.persistence.Id"/>
 <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
 <fullyQualifiedTypeName name="org.hibernate.annotations.GenericGenerator"/>
-<fullyQualifiedTypeName name="javax.persistence.Transient"/>
 <fullyQualifiedTypeName name="org.hibernate.validator.Length"/>
 <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
 <fullyQualifiedTypeName name="javax.persistence.JoinColumns"/>
@@ -19,4 +17,8 @@
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="ua.server.model.entity.Employee"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="javax.persistence.Transient"/>
+<fullyQualifiedTypeName name="ua.server.model.entity.IEntity"/>
+<fullyQualifiedTypeName name="ua.server.model.entity.Coordinate"/>
 </qualifiedTypeNameHistroy>

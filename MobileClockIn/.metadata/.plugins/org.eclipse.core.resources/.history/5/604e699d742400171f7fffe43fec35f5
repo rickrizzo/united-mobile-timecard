@@ -1,0 +1,79 @@
+package ua.server.base.util;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+import javax.servlet.http.HttpServletRequest;
+
+
+public class WebUtil {
+    public static final String FORMAT_PDF = "pdf";
+    public static final String FORMAT_XML = "xml";
+    public static final String FORMAT_DOC = "doc";
+    public static final String FORMAT_DOCX = "docx";
+    public static final String FORMAT_PPS = "pps";
+    public static final String FORMAT_PPSX = "ppsx";
+    public static final String FORMAT_HTML = "html";
+    public static final String FORMAT_XLS = "xls";
+    public static final String FORMAT_XLSX = "xlsx";
+    public static final String FORMAT_CSV = "csv";
+    public static final String FORMAT_RTF = "rtf";
+
+	public static String getServerURL(HttpServletRequest request) throws UnknownHostException {
+		InetAddress addr = InetAddress.getLocalHost();
+		String ip=addr.getHostAddress();
+		String url="http://"+
+			ip+
+			(request.getServerPort()!=80?":"+request.getServerPort():"")+
+			request.getContextPath();
+		return url;
+	}
+	
+	public static String getContentType(String type) {
+		if (type.compareToIgnoreCase(FORMAT_PDF) == 0) {
+			return "application/pdf";
+		} else if (type.compareToIgnoreCase(FORMAT_CSV) == 0) {
+			return "text/csv";
+		} else if (type.compareToIgnoreCase(FORMAT_RTF) == 0) {
+			return "application/rtf";
+		} else if (type.compareToIgnoreCase(FORMAT_HTML) == 0) {
+			return "text/html";
+		} else if (type.compareToIgnoreCase(FORMAT_DOC) == 0) {
+			return "application/msword"; 
+		} else if (type.compareToIgnoreCase(FORMAT_DOCX) == 0) {
+			return "application/vnd.openxmlformats-officedocument.wordprocessingml.document"; 
+		} else if (type.compareToIgnoreCase(FORMAT_XLS) == 0) {
+			return "application/vnd.ms-excel"; // this will open standalone
+												// excel
+		} else if (type.compareToIgnoreCase(FORMAT_XLSX) == 0) {
+			// return "application/vnd.ms-excel"; // this will open excel in IE
+			// return "application/x-excel"; // this will open standalone excel
+			return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"; // this
+																						// will
+																						// open
+																						// standalone
+																						// excel
+		} else if (type.compareToIgnoreCase(FORMAT_PPS) == 0) {
+			return "application/vnd.ms-powerpoint"; 
+		} else if (type.compareToIgnoreCase(FORMAT_PPSX) == 0) {
+			return "application/vnd.openxmlformats-officedocument.presentationml.slideshow"; 
+		} else if (type.compareToIgnoreCase(FORMAT_XML) == 0) {
+			return "text/xml";
+		} else
+			return "application/octet-stream";
+	}
+
+	public static boolean validateServerIP(String expectedURL) {
+
+		try{
+			InetAddress addr = InetAddress.getLocalHost();
+			String ip=addr.getHostAddress();
+			
+			return expectedURL.indexOf(ip)!=-1;
+		}
+		catch(Exception e){
+			return false;
+		}
+	}
+
+}
