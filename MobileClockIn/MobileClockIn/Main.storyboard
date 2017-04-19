@@ -162,7 +162,7 @@
                         </variation>
                     </view>
                     <connections>
-						<outlet property="ClockInButton" destination="70" id="name-outlet-70"/>
+                        <outlet property="ClockInButton" destination="70" id="name-outlet-70"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -177,8 +177,6 @@
         <image name="Default-568h.png" width="320" height="568"/>
         <image name="Icon-60.png" width="60" height="60"/>
         <image name="Icon.png" width="57" height="57"/>
-        <image name="Images/Bulbs.jpg" width="43" height="43"/>
-        <image name="Images/Flower Buds.jpg" width="43" height="43"/>
         <image name="Images/Fruits.jpg" width="43" height="43"/>
         <image name="Images/Legumes.jpg" width="43" height="43"/>
         <image name="Images/Tubers.jpg" width="43" height="43"/>

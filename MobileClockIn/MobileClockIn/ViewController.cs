@@ -6,6 +6,7 @@ using Foundation;
 using Security;
 using CoreLocation;
 using UIKit;
+using System.Net;
 
 namespace MobileClockIn
 {
@@ -13,6 +14,7 @@ namespace MobileClockIn
 	{
 		UITableView table;
 		UIAlertView lateClockIn;
+		String latitude, longitude;
 
 		#region Computer Properties
 		public static bool UserInterfaceIdiomIsPhone
@@ -52,6 +54,12 @@ namespace MobileClockIn
 			ClockInButton.TouchUpInside += (sender, ea) =>
 			{
 				lateClockIn.Show();
+				Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
+				Console.WriteLine(longitude + ", " + latitude);
+
+				// Post Data
+				String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString() + "\",\"latitude\":" + latitude +",\"longitude\":" + longitude + "}";
+				(new WebClient()).UploadString("http://requestb.in/rieju5ri", postedJson);
 				//new UIAlertView("On Time", "You've clocked in.", null, "OK", null).Show();
 			};
 
@@ -65,7 +73,6 @@ namespace MobileClockIn
 			CreateTableItems();
 			Add(table);
 
-			Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
 			UIApplication.Notifications.ObserveDidBecomeActive((sender, args) =>
 			{
 				Manager.LocationUpdated += HandleLocationChanged;
@@ -103,7 +110,8 @@ namespace MobileClockIn
 		public void HandleLocationChanged(object sender, LocationUpdatedEventArgs e)
 		{
 			CLLocation location = e.Location;
-			Console.WriteLine(location.Coordinate.Longitude.ToString() + ", " + location.Coordinate.Latitude.ToString());
+			longitude = location.Coordinate.Longitude.ToString();
+			latitude = location.Coordinate.Latitude.ToString();
 		}
 		#endregion
 	}
