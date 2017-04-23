@@ -89,5 +89,10 @@ namespace MobileClockIn
 
 			return cell;
 		}
+
+		public string getCurrentAssignmentStartDateTime()
+		{
+			return indexedTableItems[keys[0]][0].startDateTime;
+		}
 	}
 }

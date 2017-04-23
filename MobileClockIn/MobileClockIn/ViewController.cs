@@ -13,7 +13,7 @@ namespace MobileClockIn
 	public partial class ViewController : UIViewController
 	{
 		UITableView table;
-		UIAlertView lateClockIn;
+		UIAlertView lateClockIn, normalClockIn, successMess, failureMess;
 		String latitude, longitude;
 
 		#region Computer Properties
@@ -43,26 +43,6 @@ namespace MobileClockIn
 			//CurrentShiftLabel.BackgroundColor = UIColor.Clear;
 			//CurrentShiftLabel.Text = "SHIFT 1 : 14th Apr, 07:30 - 09:30";
 
-			lateClockIn = new UIAlertView();
-			lateClockIn.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
-			lateClockIn.Title = "You're late";
-			lateClockIn.AddButton("Cancel");
-			lateClockIn.AddButton("OK");
-			lateClockIn.GetTextField(0).Placeholder = "Provide Reason";
-			// Perform any additional setup after loading the view, typically from a nib.
-
-			ClockInButton.TouchUpInside += (sender, ea) =>
-			{
-				lateClockIn.Show();
-				Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
-				Console.WriteLine(longitude + ", " + latitude);
-
-				// Post Data
-				String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString() + "\",\"latitude\":" + latitude +",\"longitude\":" + longitude + "}";
-				(new WebClient()).UploadString("http://requestb.in/rieju5ri", postedJson);
-				//new UIAlertView("On Time", "You've clocked in.", null, "OK", null).Show();
-			};
-
 			var width = View.Bounds.Width;
 			var height = View.Bounds.Height;
 
@@ -72,6 +52,78 @@ namespace MobileClockIn
 			table.AutoresizingMask = UIViewAutoresizing.All;
 			CreateTableItems();
 			Add(table);
+
+			ClockInButton.TouchUpInside += (sender, ea) =>
+			{
+				DateTime nowTime = DateTime.Now.ToLocalTime();
+				NSIndexPath path = NSIndexPath.FromRowSection(0,0);
+				UITableViewCell cell = table.Source.GetCell(table, path);
+				var assign = cell.TextLabel.Text.Split(' ');
+				var start = assign[2] + "/2017 " + assign[3];
+				DateTime curAssignSDT = DateTime.ParseExact(start, "MM/dd/yyyy HH:mm",null);
+
+				successMess = new UIAlertView();
+				successMess.Title = "You've Successfully clocked in!";
+				successMess.AddButton("Cancel");
+				successMess.AddButton("OK");
+
+				if (curAssignSDT.CompareTo(nowTime) < 0)
+				{
+					//Late Clock in Action
+					lateClockIn = new UIAlertView();
+					lateClockIn.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+					lateClockIn.Title = "You're late";
+					lateClockIn.AddButton("Cancel");
+					lateClockIn.AddButton("OK");
+					lateClockIn.GetTextField(0).Placeholder = "Provide Reason";
+					lateClockIn.Show();
+					Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
+					Console.WriteLine(longitude + ", " + latitude);
+
+					lateClockIn.Clicked += (object s, UIButtonEventArgs ev) =>
+					{
+						if (ev.ButtonIndex == 1)
+						{
+							// Post Data
+							String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
+											 + "\",\"latitude\":" + latitude
+											 + ",\"longitude\":" + longitude
+											 + ",\"Reason\":" + lateClockIn.GetTextField(0).Text
+											 + "}";
+							(new WebClient()).UploadString("http://requestb.in/1jm1gl31", postedJson);
+
+							successMess.Show();
+						}
+					};
+				}
+				else
+				{
+					normalClockIn = new UIAlertView();
+					normalClockIn.Title = "You're on Time";
+					normalClockIn.AddButton("Cancel");
+					normalClockIn.AddButton("OK");
+					normalClockIn.Show();
+
+					normalClockIn.Clicked += (object s, UIButtonEventArgs ev) =>
+					{
+						if (ev.ButtonIndex == 1)
+						{
+							// Post Data
+							String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
+											 + "\",\"latitude\":" + latitude
+											 + ",\"longitude\":" + longitude
+											 + "}";
+							(new WebClient()).UploadString("http://requestb.in/1jm1gl31", postedJson);
+						}
+
+						successMess.Show();
+					};
+				}
+
+
+
+			};
+
 
 			UIApplication.Notifications.ObserveDidBecomeActive((sender, args) =>
 			{
