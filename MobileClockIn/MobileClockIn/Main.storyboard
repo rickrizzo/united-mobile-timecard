@@ -106,7 +106,6 @@
                                     </mask>
                                 </variation>
                             </label>
-
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    Upcoming Assignments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="194">
                                 <rect key="frame" x="0.0" y="243" width="414" height="50"/>
                                 <constraints>
@@ -133,6 +132,7 @@
                                         <include reference="201"/>
                                     </mask>
                                 </variation>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="195">
                                 <rect key="frame" x="0.0" y="293" width="414" height="321"/>
@@ -163,6 +163,7 @@
                                         <include reference="203"/>
                                     </mask>
                                 </variation>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -319,8 +320,6 @@
         <image name="Default-568h.png" width="320" height="568"/>
         <image name="Icon-60.png" width="60" height="60"/>
         <image name="Icon.png" width="57" height="57"/>
-        <image name="Images/Fruits.jpg" width="43" height="43"/>
-        <image name="Images/Legumes.jpg" width="43" height="43"/>
         <image name="Images/Tubers.jpg" width="43" height="43"/>
         <image name="Images/Vegetables.jpg" width="43" height="43"/>
         <image name="Images/Icons/29_icon.png" width="29" height="29"/>
