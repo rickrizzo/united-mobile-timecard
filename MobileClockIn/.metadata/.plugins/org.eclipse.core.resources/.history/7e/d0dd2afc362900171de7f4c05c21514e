@@ -1,0 +1,45 @@
+package ua.server.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity(name="SAMMPLE")
+public class SampleEntity implements IPersistable<Long> {
+
+	@Id @GeneratedValue
+    @Column (name="SAMPLE_ID")
+    private Long sampleId;
+
+    @Column(name = "SAMPLE_TYPE")
+    private String sampleType;
+
+    public Long getSampleId() {
+		return sampleId;
+	}
+
+	public void setSampleId(Long sampleId) {
+		this.sampleId = sampleId;
+	}
+
+	public String getSampleType() {
+		return sampleType;
+	}
+
+	public void setSampleType(String sampleType) {
+		this.sampleType = sampleType;
+	}
+
+	public String getSampleName() {
+		return sampleName;
+	}
+
+	public void setSampleName(String sampleName) {
+		this.sampleName = sampleName;
+	}
+
+	@Column(name="SAMPLE_NAME")
+    private String sampleName;
+	
+}

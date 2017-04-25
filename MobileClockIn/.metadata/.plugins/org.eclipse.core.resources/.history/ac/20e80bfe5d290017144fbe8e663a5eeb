@@ -1,0 +1,30 @@
+package ua.server.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import ua.server.model.Location;
+import ua.server.repository.LocationRepository;
+
+@Service
+public class LocationService extends AbstractService<Location, Long> {
+
+    private LocationRepository locationRepository;
+
+    @Autowired
+    public LocationService(LocationRepository locationRepository) {
+        super(locationRepository);
+        this.locationRepository=locationRepository;
+    }
+    
+    public boolean validateCoordinate(Location entity) {
+    	Double westLat = 42.737029;
+    	Double eastLat = 42.735228;
+    	Double northLong = 3.3;
+    	Double southLong = 3.3;
+    	
+    	
+    	return true;
+    }
+
+}

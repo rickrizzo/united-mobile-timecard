@@ -1,0 +1,30 @@
+package ua.server.test.it;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ua.server.model.Param;
+import ua.server.repository.ParamRepository;
+import ua.server.rest.ParamController;
+
+public class ParamIT extends AbstractIT<Param, Long> {
+
+    private ParamController controller;
+    private ParamRepository repository;
+
+    public ParamIT() {
+        super("param", Param.class);
+    }
+
+    @Autowired
+    public void setController(ParamController controller) {
+        this.controller = controller;
+        super.setController(controller);
+    }
+
+    @Autowired
+    public void setRepository(ParamRepository repository) {
+        this.repository = repository;
+        super.setRepository(repository);
+    }
+}
