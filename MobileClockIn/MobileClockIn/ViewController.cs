@@ -12,8 +12,8 @@ namespace MobileClockIn
 {
 	public partial class ViewController : UIViewController
 	{
-		UITableView table;
-		UIAlertView lateClockIn, normalClockIn, successMess, failureMess;
+		UITableView assignTable, historyTable;
+		UIAlertView lateClockIn, normalClockIn, successMess;
 		String latitude, longitude;
 
 		#region Computer Properties
@@ -37,27 +37,35 @@ namespace MobileClockIn
 		{
 			base.ViewDidLoad();
 
-			//CurrentShiftLabel.Font = UIFont.FromName("AmericanTypewriter", 20f);
-			//CurrentShiftLabel.TextColor = UIColor.FromRGB(38, 127, 0);
-			//CurrentShiftLabel.TextAlignment = UITextAlignment.Center;
-			//CurrentShiftLabel.BackgroundColor = UIColor.Clear;
-			//CurrentShiftLabel.Text = "SHIFT 1 : 14th Apr, 07:30 - 09:30";
+			TabBarCenter.Items[1].Image = UIImage.FromBundle("today.png");
+			TabBarCenter.Items[2].Image = UIImage.FromBundle("settings.png");
+			TabBarCenter.Items[1].Title = "Schedule";
+			TabBarCenter.Items[2].Title = "Setting";
+			TabBarCenter.SelectedItem = TabBarCenter.Items[1];
+
+			DateTime nowTime = DateTime.Now.ToLocalTime();
+			NavigationHeader.Items[0].Title = String.Format("{0:MMMM dd dddd}", nowTime);
+
+			TabBarCenter.ItemSelected += (sender, e) =>
+			{
+				
+			};
 
 			var width = View.Bounds.Width;
 			var height = View.Bounds.Height;
+			assignTable = new UITableView(new CGRect(0, 150, width, height / 2));
+			historyTable = new UITableView(View.Bounds, UITableViewStyle.Grouped);
 
-			table = new UITableView(new CGRect(0, 150, width, height / 3));
-			//table = new UITableView(View.Bounds, UITableViewStyle.Grouped);
-
-			table.AutoresizingMask = UIViewAutoresizing.All;
+			assignTable.AutoresizingMask = UIViewAutoresizing.All;
 			CreateTableItems();
-			Add(table);
+			Add(assignTable);
+			//Add(historyTable);
 
 			ClockInButton.TouchUpInside += (sender, ea) =>
 			{
-				DateTime nowTime = DateTime.Now.ToLocalTime();
+				
 				NSIndexPath path = NSIndexPath.FromRowSection(0,0);
-				UITableViewCell cell = table.Source.GetCell(table, path);
+				UITableViewCell cell = assignTable.Source.GetCell(assignTable, path);
 				var assign = cell.TextLabel.Text.Split(' ');
 				var start = assign[2] + "/2017 " + assign[3];
 				DateTime curAssignSDT = DateTime.ParseExact(start, "MM/dd/yyyy HH:mm",null);
@@ -154,7 +162,7 @@ namespace MobileClockIn
 				assignments.Add(new TableItem(assign[1]) { SubHeading = assign[0] });
 			}
 
-			table.Source = new TableSource(assignments, this);
+			assignTable.Source = new TableSource(assignments, this);
 		}
 		#endregion
 
