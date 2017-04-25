@@ -98,8 +98,8 @@ namespace MobileClockIn
 											 + ",\"longitude\":" + longitude
 											 + ",\"Reason\":" + lateClockIn.GetTextField(0).Text
 											 + "}";
-							(new WebClient()).UploadString("http://requestb.in/1jm1gl31", postedJson);
-
+							(new WebClient()).UploadString("https://calm-thicket-99131.herokuapp.com/location/request", postedJson);
+							Console.Write("SENT " + postedJson);
 							successMess.Show();
 						}
 					};
@@ -172,6 +172,7 @@ namespace MobileClockIn
 			CLLocation location = e.Location;
 			longitude = location.Coordinate.Longitude.ToString();
 			latitude = location.Coordinate.Latitude.ToString();
+			Console.Write(longitude.ToString());
 		}
 		#endregion
 	}
