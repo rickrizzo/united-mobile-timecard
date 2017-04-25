@@ -1,7 +1,0 @@
-package ua.server.service;
-
-import ua.server.model.IEntity;
-
-public interface BaseService {
-    void create(IEntity entity);
-}
