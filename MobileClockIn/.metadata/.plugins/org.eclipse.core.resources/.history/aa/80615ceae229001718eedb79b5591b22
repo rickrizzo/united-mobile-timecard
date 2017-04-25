@@ -11,15 +11,16 @@ import java.util.List;
 @Service
 public class CategoryService extends AbstractService<Category, Long> {
 
-	private CategoryRepository repository;
+    private CategoryRepository repository;
 
-	@Autowired
-	public CategoryService(CategoryRepository repository) {
-		super(repository);
-		this.repository = repository;
-	}
 
-	public List<Category> findByName(String name) {
-		return repository.findByName(name);
-	}
+    @Autowired
+    public CategoryService(CategoryRepository repository) {
+        super(repository);
+        this.repository=repository;
+    }
+
+    public List<Category> findByName(String name) {
+        return repository.findByName(name);
+    }
 }

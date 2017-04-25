@@ -7,36 +7,35 @@ import javax.persistence.Id;
 
 import ua.server.model.abstr.IEntity;
 
-@Entity(name = "location")
+@Entity(name="location")
 public class Location implements IEntity<Long> {
+	
+    @Id @GeneratedValue
+    @Column (name="location_ID")
+    private Long locationID;
 
-	@Id
-	@GeneratedValue
-	@Column(name = "location_ID")
-	private Long locationID;
+    @Column(name = "location_UUID")
+    private String locationUUID;
 
-	@Column(name = "location_UUID")
-	private String locationUUID;
+    @Column(name = "location_name")
+    private String locationName;
+    
+    @Column(name = "location_latitude")
+    private Double latitude;
 
-	@Column(name = "location_name")
-	private String locationName;
+    @Column(name = "location_longitude")
+    private Double longitude;
+    
+    public Location() {
+    	
+    }
 
-	@Column(name = "location_latitude")
-	private Double latitude;
-
-	@Column(name = "location_longitude")
-	private Double longitude;
-
-	public Location() {
-
-	}
-
-	public Location(String uuid, Double latitude, Double longitude) {
-		this.locationUUID = uuid;
-		this.latitude = latitude;
-		this.longitude = longitude;
-	}
-
+    public Location(String uuid, Double latitude, Double longitude) {
+    	this.locationUUID = uuid;
+    	this.latitude = latitude;
+    	this.longitude = longitude;
+    }
+    
 	@Override
 	public Long getId() {
 		return locationID;

@@ -16,39 +16,40 @@ import ua.server.service.LocationService;
 public class LocationController extends AbstractController<Location, Long> {
 
 	private LocationService service;
-	
-    @Autowired
-    public LocationController(LocationService service) {
-        super(service);
-        this.service = service;
-    }
 
-    @RequestMapping(value = "request", method = RequestMethod.POST, consumes = "text/plain")
-    public boolean processRequest(@RequestBody String json) throws Exception {
-    	//String json ="{\"uuid\":\"example-uuid\", \"latitude\": 42.735894, \"longitude\":-73.681501}";
-    	String uuid = JsonPath.read(json, "$.uuid");
-    	Double latitude = JsonPath.read(json, "$.latitude");
-    	Double longitude = JsonPath.read(json, "$.longitude");
-        Location entity = new Location(uuid, latitude, longitude);
-        return service.validateCoordinate(service.save(entity));
-    }
-    
-    @RequestMapping(value = "json", method = RequestMethod.GET)
-    public boolean sampleJson() {
-    	String json ="{\"uuid\":\"example-uuid\", \"latitude\": 42.735894, \"longitude\":-73.681501}";
-    	String uuid = JsonPath.read(json, "$.uuid");
-    	Double latitude = JsonPath.read(json, "$.latitude");
-    	Double longitude = JsonPath.read(json, "$.longitude");
-        Location entity = new Location(uuid, latitude, longitude);
-        return service.validateCoordinate(service.save(entity));
-    }
-    
-    @RequestMapping(value = "random", method = RequestMethod.GET)
-    public Location saveRandomLocation() {
-        Location entity = new Location();
-        entity.setLatitude(Math.random());
-        entity.setLongitude(Math.random());
-        entity.setLocationUUID("samplestringthatrepresentsauuid");
-        return service.save(entity);
-    }
+	@Autowired
+	public LocationController(LocationService service) {
+		super(service);
+		this.service = service;
+	}
+
+	@RequestMapping(value = "request", method = RequestMethod.POST, consumes = "text/plain")
+	public boolean processRequest(@RequestBody String json) throws Exception {
+		// String json ="{\"uuid\":\"example-uuid\", \"latitude\": 42.735894,
+		// \"longitude\":-73.681501}";
+		String uuid = JsonPath.read(json, "$.uuid");
+		Double latitude = JsonPath.read(json, "$.latitude");
+		Double longitude = JsonPath.read(json, "$.longitude");
+		Location entity = new Location(uuid, latitude, longitude);
+		return service.validateCoordinate(service.save(entity));
+	}
+
+	@RequestMapping(value = "json", method = RequestMethod.GET)
+	public boolean sampleJson() {
+		String json = "{\"uuid\":\"example-uuid\", \"latitude\": 42.735894, \"longitude\":-73.681501}";
+		String uuid = JsonPath.read(json, "$.uuid");
+		Double latitude = JsonPath.read(json, "$.latitude");
+		Double longitude = JsonPath.read(json, "$.longitude");
+		Location entity = new Location(uuid, latitude, longitude);
+		return service.validateCoordinate(service.save(entity));
+	}
+
+	@RequestMapping(value = "random", method = RequestMethod.GET)
+	public Location saveRandomLocation() {
+		Location entity = new Location();
+		entity.setLatitude(Math.random());
+		entity.setLongitude(Math.random());
+		entity.setLocationUUID("samplestringthatrepresentsauuid");
+		return service.save(entity);
+	}
 }

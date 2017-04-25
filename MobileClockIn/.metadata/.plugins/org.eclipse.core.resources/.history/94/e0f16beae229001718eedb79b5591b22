@@ -12,16 +12,16 @@ import java.util.List;
 @RequestMapping("/category")
 public class CategoryController extends AbstractController<Category, Long> {
 
-	private CategoryService service;
+    private CategoryService service;
 
-	@Autowired
-	public CategoryController(CategoryService service) {
-		super(service);
-		this.service = service;
-	}
+    @Autowired
+    public CategoryController(CategoryService service) {
+        super(service);
+        this.service=service;
+    }
 
-	@RequestMapping(value = "findByName/{name}", method = RequestMethod.GET)
-	public List<Category> findByName(@PathVariable String name) {
-		return service.findByName(name);
-	}
+    @RequestMapping(value="findByName/{name}", method = RequestMethod.GET)
+    public List<Category> findByName(@PathVariable String name) {
+        return service.findByName(name);
+    }
 }
