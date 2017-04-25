@@ -1,0 +1,44 @@
+package ua.server.rest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jayway.jsonpath.*;
+
+import ua.server.model.Location;
+import ua.server.service.LocationService;
+
+@RestController
+@RequestMapping("/location")
+public class LocationController extends AbstractController<Location, Long> {
+
+	private LocationService service;
+	
+    @Autowired
+    public LocationController(LocationService service) {
+        super(service);
+        this.service = service;
+    }
+    
+    @RequestMapping(value = "json", method = RequestMethod.GET)
+    public Location processRequest() {
+    	String json ="";
+    	JsonPath.read(json, "$.pageInfo.pageName");
+        Location entity = new Location();
+        entity.setLatitude(Math.random());
+        entity.setLongitude(Math.random());
+        entity.setLocationUUID("samplestringthatrepresentsauuid");
+        return service.save(entity);
+    }
+    
+    @RequestMapping(value = "random", method = RequestMethod.GET)
+    public Location saveRandomLocation() {
+        Location entity = new Location();
+        entity.setLatitude(Math.random());
+        entity.setLongitude(Math.random());
+        entity.setLocationUUID("samplestringthatrepresentsauuid");
+        return service.save(entity);
+    }
+}

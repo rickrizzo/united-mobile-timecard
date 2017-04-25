@@ -1,0 +1,46 @@
+package ua.server.dao.impl;
+
+import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Repository;
+
+import ua.server.dao.BaseDAO;
+import ua.server.model.ApiRequest;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+
+@Repository
+public class BaseDAOImpl implements BaseDAO {
+	
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	
+    EntityManagerFactory factory = Persistence.createEntityManagerFactory("thePersistenceUnit");
+
+	
+	public void create(ApiRequest entity) {
+	    EntityManager theManager = factory.createEntityManager();
+	    theManager .getTransaction().begin();
+	    theManager.persist(entity);
+	    theManager.getTransaction().commit();
+	}
+
+	public void update(ApiRequest entity) {
+		entityManager.merge(entity);
+	}
+
+	public ApiRequest getApiRequestById(int id) {
+		return entityManager.find(ApiRequest.class, id);
+	}
+
+	public void delete(int id) {
+		ApiRequest entity = getApiRequestById(id);
+		if (entity != null) {
+			entityManager.remove(entity);
+		}
+	}
+
+}

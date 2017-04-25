@@ -1,0 +1,28 @@
+package ua.server.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import ua.server.dao.BaseDAO;
+import ua.server.model.ApiRequest;
+import ua.server.model.IEntity;
+import ua.server.service.BaseService;
+
+@Service
+@Transactional
+public class BaseServiceImpl implements BaseService {
+
+	@Autowired
+	private BaseDAO baseDAO;
+
+	public void create(ApiRequest entity) {
+		baseDAO.create(entity);
+	}
+
+	public ApiRequest getApiRequestById(int id) {
+		return baseDAO.getApiRequestById(id);
+	}
+	
+	
+}

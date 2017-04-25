@@ -1,0 +1,38 @@
+package com.mycuteblog.model;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "api_request")
+public class ApiRequest {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @Column(name="request_time")
+    private Date requestTime;
+
+    public ApiRequest() {
+    }
+
+    public ApiRequest(Date requestTime) {
+    	this.id = 12345;
+        this.requestTime = requestTime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getRequestTime() {
+        return requestTime;
+    }
+
+    public void setRequestTime(Date requestTime) {
+        this.requestTime = requestTime;
+    }
+}

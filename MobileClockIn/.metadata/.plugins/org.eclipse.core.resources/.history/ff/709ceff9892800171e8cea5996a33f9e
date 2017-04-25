@@ -1,0 +1,13 @@
+package ua.server.dao;
+
+import ua.server.model.ApiRequest;
+
+public interface BaseDAO {
+	void create(ApiRequest entity);
+
+	void update(ApiRequest entity);
+
+	ApiRequest getApiRequestById(int id);
+
+	void delete(int id);
+}

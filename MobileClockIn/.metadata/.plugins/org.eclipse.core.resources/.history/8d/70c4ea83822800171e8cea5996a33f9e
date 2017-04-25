@@ -1,0 +1,8 @@
+package ua.server.model;
+
+import javax.persistence.Entity;
+
+@Entity
+public interface IEntity {
+
+}

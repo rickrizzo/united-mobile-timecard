@@ -1,0 +1,7 @@
+package ua.server.service;
+
+import ua.server.model.ApiRequest;
+
+public interface BaseService {
+    void create(ApiRequest apiRequest);
+}

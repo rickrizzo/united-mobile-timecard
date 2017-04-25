@@ -1,0 +1,55 @@
+package ua.server.dao.impl;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import ua.server.dao.BaseDAO;
+import ua.server.model.ApiRequest;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+
+@Repository
+@Transactional
+public class BaseDAOImpl implements BaseDAO {
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@Autowired
+	SessionFactory sessionFactory;
+
+	/**
+	 * Save an AddressBook object to the database
+	 */
+	public void save(ApiRequest entity) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.saveOrUpdate(entity);
+	}
+
+	public void create(ApiRequest entity) {
+		entityManager.persist(entity);
+	}
+
+	public void update(ApiRequest entity) {
+		entityManager.merge(entity);
+	}
+
+	public ApiRequest getApiRequestById(int id) {
+		return entityManager.find(ApiRequest.class, id);
+	}
+
+	public void delete(int id) {
+		ApiRequest entity = getApiRequestById(id);
+		if (entity != null) {
+			entityManager.remove(entity);
+		}
+	}
+
+}

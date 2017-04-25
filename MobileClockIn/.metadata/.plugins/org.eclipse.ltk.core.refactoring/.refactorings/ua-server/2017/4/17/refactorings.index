@@ -1,0 +1,27 @@
+1492985896620	Delete element
+1492985906626	Delete element
+1492987333612	Rename type 'ApiRequestDao'
+1492987358513	Rename type 'ApiRequestController'
+1492987380767	Rename type 'ApiRequestDaoImpl'
+1492987393064	Rename type 'ApiRequestService'
+1492987404728	Rename type 'ApiRequestServiceImpl'
+1492987567020	Rename package 'com.mycuteblog'
+1492987651172	Rename type 'BaseDao'
+1492987670157	Rename package 'ua.server.rest'
+1492987765399	Rename package 'com.mycuteblog'
+1492987896848	Rename package 'ua.server'
+1492987942475	Rename package 'com.mycuteblog.dao'
+1492987983975	Rename package 'com.mycuteblog.dao.impl'
+1492987998196	Rename package 'com.mycuteblog.model'
+1492988013430	Rename package 'com.mycuteblog.service.impl'
+1492988027103	Rename package 'com.mycuteblog.service'
+1492988106418	Rename package 'ua.server.service.impl'
+1492988145423	Rename package 'ua.server.service'
+1492988179487	Rename package 'ua.server.dao.impl'
+1492988226750	Rename package 'ua.server.model'
+1492988240317	Rename package 'ua.server.dao'
+1492988310011	Rename package 'com.mycuteblog.model'
+1492988435828	Rename package 'ua.server.model'
+1492988596893	Rename package 'com.mycuteblog'
+1492993188428	Delete element
+1492996208292	Delete element

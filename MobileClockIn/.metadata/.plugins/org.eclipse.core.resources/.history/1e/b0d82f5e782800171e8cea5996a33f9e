@@ -1,0 +1,7 @@
+package com.mycuteblog.service;
+
+import com.mycuteblog.model.ApiRequest;
+
+public interface BaseService {
+    void create(ApiRequest apiRequest);
+}

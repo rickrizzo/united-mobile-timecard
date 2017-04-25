@@ -1,0 +1,31 @@
+package ua.server.rest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import ua.server.model.Location;
+import ua.server.service.LocationService;
+
+@RestController
+@RequestMapping("/location")
+public class LocationController extends AbstractController<Location, Long> {
+
+	private LocationService service;
+	
+    @Autowired
+    public LocationController(LocationService service) {
+        super(service);
+        this.service = service;
+    }
+    
+    @RequestMapping("/random")
+    public Location saveRandomLocation() {
+        Location entity = new Location();
+        entity.setId();
+        entity.setLatitude(Math.random());
+        entity.setLongitude(Math.random());
+        entity.setLocationUUID("samplestringthatrepresentsauuid");
+        return service.save(entity);
+    }
+}

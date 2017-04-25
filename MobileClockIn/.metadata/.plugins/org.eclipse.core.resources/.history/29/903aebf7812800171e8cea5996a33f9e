@@ -1,0 +1,13 @@
+package ua.server.dao;
+
+import ua.server.model.IEntity;
+
+public interface BaseDAO {
+	void create(IEntity entity);
+
+	void update(IEntity entity);
+
+	IEntity getEntityById(Integer id);
+
+	void delete(Integer id);
+}

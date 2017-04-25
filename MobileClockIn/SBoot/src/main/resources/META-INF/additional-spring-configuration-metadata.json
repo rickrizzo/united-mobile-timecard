@@ -1,0 +1,57 @@
+{"properties": [
+  {
+    "name": "db.hibernate.dialect",
+    "type": "java.lang.String",
+    "description": "A description for 'db.hibernate.dialect'"
+  },
+  {
+    "name": "db.hibernate.dialect",
+    "type": "java.lang.String",
+    "description": "A description for 'db.hibernate.dialect'"
+  },
+  {
+    "name": "db.entitymanager.packages.to.scan",
+    "type": "java.lang.String",
+    "description": "A description for 'db.entitymanager.packages.to.scan'"
+  },
+  {
+    "name": "db.hibernate.show_sql",
+    "type": "java.lang.String",
+    "description": "A description for 'db.hibernate.show_sql'"
+  },
+  {
+    "name": "db.hibernate.hbm2ddl.auto",
+    "type": "java.lang.String",
+    "description": "A description for 'db.hibernate.hbm2ddl.auto'"
+  },
+  {
+    "name": "spring.h2.console.path",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.h2.console.path'"
+  },
+  {
+    "name": "spring.h2.console.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.h2.console.enabled'"
+  },
+  {
+    "name": "db.password",
+    "type": "java.lang.String",
+    "description": "A description for 'db.password'"
+  },
+  {
+    "name": "db.username",
+    "type": "java.lang.String",
+    "description": "A description for 'db.username'"
+  },
+  {
+    "name": "db.url",
+    "type": "java.lang.String",
+    "description": "A description for 'db.url'"
+  },
+  {
+    "name": "db.driver",
+    "type": "java.lang.String",
+    "description": "A description for 'db.driver'"
+  }
+]}
