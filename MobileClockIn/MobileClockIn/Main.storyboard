@@ -24,9 +24,9 @@
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="172"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem systemItem="favorites" id="61"/>
-                                    <tabBarItem systemItem="search" id="66"/>
-                                    <tabBarItem systemItem="more" id="62"/>
+                                    <tabBarItem systemItem="history" id="61"/>
+                                    <tabBarItem id="66"/>
+                                    <tabBarItem id="62"/>
                                 </items>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -45,7 +45,7 @@
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="173"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Mar 22, 2017" id="68"/>
+                                    <navigationItem id="68"/>
                                 </items>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -61,9 +61,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70">
                                 <rect key="frame" x="76" y="636" width="262" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="262" id="171"/>
-                                </constraints>
                                 <state key="normal" title="Clock In">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -120,17 +117,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="199"/>
-                                        <exclude reference="201"/>
-                                    </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    <mask key="constraints">
-                                        <include reference="199"/>
-                                        <include reference="201"/>
-                                    </mask>
                                 </variation>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </label>
@@ -167,20 +156,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="67" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="164"/>
-                            <constraint firstItem="67" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="165"/>
-                            <constraint firstItem="67" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="166"/>
-                            <constraint firstItem="70" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="76" id="169"/>
-                            <constraint firstAttribute="trailing" secondItem="70" secondAttribute="trailing" constant="76" id="170"/>
-                            <constraint firstAttribute="bottom" secondItem="60" secondAttribute="bottom" id="175"/>
-                            <constraint firstItem="60" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="176"/>
-                            <constraint firstItem="60" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="177"/>
-                            <constraint firstItem="60" firstAttribute="top" secondItem="70" secondAttribute="bottom" constant="21" id="178"/>
-                            <constraint firstItem="181" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="185"/>
-                            <constraint firstItem="181" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="187"/>
-                            <constraint firstItem="181" firstAttribute="top" secondItem="67" secondAttribute="bottom" id="190"/>
-                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="181"/>
@@ -192,12 +167,9 @@
                                 <exclude reference="164"/>
                                 <exclude reference="165"/>
                                 <exclude reference="166"/>
-                                <exclude reference="169"/>
-                                <exclude reference="170"/>
                                 <exclude reference="175"/>
                                 <exclude reference="176"/>
                                 <exclude reference="177"/>
-                                <exclude reference="178"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -211,17 +183,16 @@
                                 <include reference="164"/>
                                 <include reference="165"/>
                                 <include reference="166"/>
-                                <include reference="169"/>
-                                <include reference="170"/>
                                 <include reference="175"/>
                                 <include reference="176"/>
                                 <include reference="177"/>
-                                <include reference="178"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="ClockInButton" destination="70" id="name-outlet-70"/>
+                        <outlet property="TabBarCenter" destination="60" id="name-outlet-60"/>
+                        <outlet property="NavigationHeader" destination="67" id="name-outlet-67"/>
                     </connections>
                     <navigationItem title="Mobile ClockIn" id="264" key="navigationItem"/>
                 </viewController>
@@ -329,5 +300,7 @@
         <image name="Images/Icons/72_icon.png" width="72" height="72"/>
         <image name="Images/Icons/114_icon.png" width="114" height="114"/>
         <image name="Images/Icons/512_icon.png" width="512" height="512"/>
+        <image name="settings.png" width="24" height="24"/>
+        <image name="today.png" width="24" height="24"/>
     </resources>
 </document>
