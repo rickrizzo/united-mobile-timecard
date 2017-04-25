@@ -5,7 +5,61 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-04-24T16:02:57Z</updated>
+  <updated>2017-04-25T14:50:33Z</updated>
+  <entry>
+    <title>Spring Cloud Task 1.2.0.RELEASE is now available</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/04/25/spring-cloud-task-1-2-0-release-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Glenn Renfro</name>
+    </author>
+    <id>tag:spring.io,2017-04-24:2909</id>
+    <updated>2017-04-25T14:50:33Z</updated>
+    <content type="html">&lt;p&gt;We are pleased to announce that Spring Cloud Task 1.2.0.RELEASE is now available via Github, Maven Central, and the Pivotal download repository. Many thanks to all of those who contributed to this release. This release represents the first GA release of the 1.2 line.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-new-in-spring-cloud-task-1-2-0-release" class="anchor" name="what-rsquo-s-new-in-spring-cloud-task-1-2-0-release"&gt;&lt;/a&gt;What&amp;rsquo;s new in Spring Cloud Task 1.2.0.RELEASE&lt;/h2&gt;
+&lt;p&gt;The Spring Cloud Task 1.2.0.RELEASE is intended to continue the integrations required for Spring Cloud Data Flow, this release provides the following features.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Better &lt;code&gt;DataSource&lt;/code&gt; integration between task and batch - This release makes configuring a shared &lt;code&gt;DataSource&lt;/code&gt; between task and batch repositories to be simpler.&lt;/li&gt;
+  &lt;li&gt;Allow the user to easily configure a prefix for the task tables - Similar to how Spring Batch allows a user to configure a prefix for the batch repository tables, Spring Cloud Task now exposes the ability to configure a prefix for task repository tables via a Spring Boot property.&lt;/li&gt;
+  &lt;li&gt;Allows an external process to update the external execution id - Prior to this release, the external execution id (the execution id for the underlying platform) had to be updated by the task itself. In some use cases, this is not possible. This release exposes the ability to update the external execution id outside the scope of the task itself.&lt;/li&gt;
+  &lt;li&gt;Add support for parent execution ids - In complex use cases, the ability for one task to launch multiple other tasks is very common. Spring Cloud Task has already supported this via partitioned batch jobs launching worker nodes as tasks. This release provides the ability within the task repository to associate the parent child relationship that occurs from that capability (both in the batch use case and with raw tasks).&lt;/li&gt;
+  &lt;li&gt;Task name can be set when creating a &lt;code&gt;TaskExecution&lt;/code&gt; externally, allowing the launcher to set the name in a persistent manor.&lt;/li&gt;
+  &lt;li&gt;Added &lt;code&gt;Ordered&lt;/code&gt; Interface to Task Events and Batch Job Events so the user can establish when task or batch events are emitted from their Spring Cloud Task application.&lt;/li&gt;
+  &lt;li&gt;Renamed &lt;code&gt;closecontext.enable&lt;/code&gt; to &lt;code&gt;closecontext.enabled&lt;/code&gt; as to match the Spring Boot style for enabled properties.&lt;/li&gt;
+  &lt;li&gt;Various bug fixes and documentation updates.&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;a href="#what-do-you-think" class="anchor" name="what-do-you-think"&gt;&lt;/a&gt;What do you think?&lt;/h2&gt;
+&lt;p&gt;We look forward to your feedback on these new features in &lt;a href="https://github.com/spring-cloud/spring-cloud-task/issues"&gt;Github&lt;/a&gt;, &lt;a href="http://stackoverflow.com/tags/spring-cloud-task"&gt;StackOverflow&lt;/a&gt;, or to me directly via Twitter &lt;a href="https://twitter.com/cppwfs"&gt;@cppwfs&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cloud.spring.io/spring-cloud-task/"&gt;Spring Cloud Task Home&lt;/a&gt; | &lt;a href="https://github.com/spring-cloud/spring-cloud-task"&gt;Source on GitHub&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-cloud-task/docs/1.2.0.RELEASE/reference/htmlsingle/"&gt;Reference Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - April 25th, 2017</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/04/25/this-week-in-spring-april-25th-2017" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2017-04-25:2910</id>
+    <updated>2017-04-25T06:18:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in beautiful Bangalore, India, at the &lt;a href="http://www.developermarch.com/developersummit"&gt;10th edition of the great, &lt;em&gt;Great&lt;/em&gt; Indian Developer Summit&lt;/a&gt;! Then, I&amp;rsquo;m off to Perth, Australia, &lt;a href="http://west.yowconference.com.au/"&gt;for YOW! West&lt;/a&gt;. If you&amp;rsquo;re around, &lt;a href="http://twitter.com/starbuxman"&gt;say hi!&lt;/a&gt;. We&amp;rsquo;ve got a lot to cover, so let&amp;rsquo;s get to it!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring REST Docs lead Andy Wilkinson &lt;a href="https://spring.io/blog/2017/04/24/spring-rest-docs-1-2-0-release"&gt;just announced Spring REST Docs 1.2.0&lt;/a&gt;! This new release includes smarter Asciidoctor integration, support for request-and-response snippets, and better support for large and complex payloads. At the same time, Andy &lt;em&gt;also&lt;/em&gt; &lt;a href="https://spring.io/blog/2017/04/24/spring-rest-docs-1-1-3-release"&gt;released Spring REST Docs 1.1.3, a maintenance release&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Catch a replay of &lt;a href="http://pages.zeroturnaround.com/Reactive-Spring-Webinar_On-Demand-Gated-Landing-Page.html?utm_campaign=reactivespringwebinar&amp;utm_medium=social&amp;utm_source=twitter"&gt;Spring WebFlux ninja Sebastien Deleuze&amp;rsquo;s epic Reactive Spring talk on ZTLive&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Boot &lt;a href="https://spring.io/blog/2017/04/21/spring-boot-1-5-3-available-now"&gt;ninja Stéphane Nicoll just announced Spring Boot 1.5.3&lt;/a&gt;, a maintenance release, packed with lots of fixes and improvements. He &lt;a href="https://spring.io/blog/2017/04/20/spring-boot-1-4-6-available-now"&gt;also announced Spring Boot 1.4.6&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Data Flow lead and co-founder Dr. Mark Pollack &lt;a href="https://spring.io/blog/2017/04/20/spring-cloud-data-flow-1-2-rc1-released"&gt;just announced Spring Cloud Data Flow 1.2.RC1&lt;/a&gt;. This release is &lt;em&gt;jam-packed&lt;/em&gt; with new features including support for composed tasks, real-time metrics and monitoring, OAuth improvements, a new (deliciously named) release of Spring Cloud Stream app starters Bacon.RELEASE, and a new release of Spring Cloud Task App Starters Belmont.RC1. Get the bits while you can! Kick the tires and feedback!&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Pipelines lead and continuous delivery guru &lt;a href="https://spring.io/blog/2017/04/20/spring-cloud-pipelines-1-0-0-m4-released"&gt;Marcin Grzejszczak just announced Spring Cloud Pipelines 1.0.0.M4&lt;/a&gt;. Spring Cloud Pipelines is a ready-made continuous delivery pipeline that you can use in Jenkins or &lt;a href="https://concourse.ci"&gt;Pivotal&amp;rsquo;s Concourse&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Not one to rest on his laurels, &lt;a href="https://spring.io/blog/2017/04/18/spring-framework-4-3-8-released"&gt;Stéphane Nicoll also announced Spring Framework 4.3.8&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The Baeldung blog has a nice post on &lt;a href="http://www.baeldung.com/spring-remoting-amqp"&gt;using the Spring AMAQP project&amp;rsquo;s service invoker support&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Zipkin lead and OpenZipkin project contributor Adrian Cole put together a very nice talk on &lt;a href="https://speakerdeck.com/adriancole/observability-3-ways-logging-metrics-and-tracing"&gt;observability with logging, ,metrics, and tracing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;This connector makes &lt;a href="https://github.com/jcustenborder/kafka-connect-rabbitmq"&gt;it easy to connect RabbitMQ to Apache Kafka&lt;/a&gt; - looks interesting!&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Contract lead Marcin Grzejszczak (remember him? He&amp;rsquo;s the lead of Spring Cloud Pipelines, too!) &lt;a href="https://www.infoq.com/news/2017/04/spring-cloud-contract"&gt;did a nice interview on InfoQ&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Bozho did a nice blog looking at use-cases for &lt;a href="https://techblog.bozho.net/spring-boot-enablewebmvc-common-use-cases/"&gt;Spring MVC in a Spring Boot application&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;the Microsoft Azure service broker for Cloud Foundry is very interesting for a number of reasons: it lets you use Microsoft Azure backing services from Cloud Foundry (right on!) and it&amp;rsquo;s written in Spring Boot, &lt;a href="https://github.com/pivotal-partner-solution-architecture/azure-service-broker-client"&gt;so it serves as a very nice template&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Want to learn what&amp;rsquo;s happening in the Cloud Foundry ecosystem? &lt;a href="https://www.cloudfoundry.org/cloud-foundry-technology-review-jan-march-2017/"&gt;I love this roundup&lt;/a&gt; from January to March 2017.&lt;/li&gt;
+  &lt;li&gt;the Auth0 blog has a nice post &lt;a href="https://auth0.com/blog/securing-spring-boot-with-jwts"&gt;on using JWTs with Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Pierre Besson put together a &lt;em&gt;very&lt;/em&gt; convenient JHipster &lt;a href="https://github.com/PierreBesson/generator-jhipster-banner"&gt;generator that generates a custom Spring Boot &lt;code&gt;banner.txt&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Gerrit Meier put together a very cool look &lt;a href="https://github.com/meistermeier/reactive-thymeleaf"&gt;at using Spring WebFlux with the Thymleaf templating technology&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Subham Aggarwal put togeter &lt;a href="http://www.discoversdk.com/blog/caching-in-spring"&gt;a nice post on caching with Spring&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Spring REST Docs 1.2.0.RELEASE</title>
     <link rel="alternate" href="https://spring.io/blog/2017/04/24/spring-rest-docs-1-2-0-release" />
@@ -806,68 +860,5 @@ apply plugin: &amp;#39;io.spring.dependency-management&amp;#39;
 &lt;p&gt;As I said above, there&amp;rsquo;s a few weeks until Spring Boot 2.0.0.M1 is released so now&amp;rsquo;s an excellent opportunity to take the new plugin for a spin and then please let us know what you think.&lt;/p&gt;
 &lt;p&gt;The plugin is still a work in progress. Many things that were not possible with the previous version are made possible by the new version. Also, a few things that were previously possible may no longer be possible, or may require a different approach. In particular, the plugin&amp;rsquo;s DSL has been deliberately stripped back to only cover functionality that we&amp;rsquo;re certain we want.&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;d like to discuss the new capabilities please do so in the comments below or &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;on Gitter&lt;/a&gt;. If you find a bug or have an idea for some further improvements then please &lt;a href="https://github.com/spring-projects/spring-boot/issues/new"&gt;open an issue on GitHub&lt;/a&gt;.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Tips: Creating a Spring Security OAuth Auth Service</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/04/05/spring-tips-creating-a-spring-security-oauth-auth-service" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2017-04-05:2890</id>
-    <updated>2017-04-05T06:04:48Z</updated>
-    <content type="html">&lt;p&gt;Speaker: Josh Long&lt;br/&gt;&lt;a href="https://www.twitter.com/starbuxman"&gt;https://www.twitter.com/starbuxman&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Hi Spring fans! In this installment we look briefly at OAuth, as a spec, and then look at how to stand up a Spring Security OAuth-based auth service.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/EoK5a99Bmjc" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring AMQP 2.0.0 Milestone 3 is Available</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/04/04/spring-amqp-2-0-0-milestone-3-is-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Gary Russell</name>
-    </author>
-    <id>tag:spring.io,2017-04-04:2889</id>
-    <updated>2017-04-04T19:05:04Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;We are pleased to announce that the third milestone for the Spring AMQP 2.0 release (2.0.0.M3) is now available.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10450&amp;amp;version=15861"&gt;36 JIRA Issues&lt;/a&gt; are included in this release, including bug fixes and a number of new features:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Initial support for broker-less integration testing - the &lt;code&gt;TestRabbitTemplate&lt;/code&gt; discovers listener containers in the application context and invokes those containers' listeners for &lt;code&gt;send()&lt;/code&gt; and &lt;code&gt;sendAndReceive()&lt;/code&gt; operations. We intend to flush out this capability with more features before GA, including routing, and simulation of the various exchange types supported by RabbitMQ. Feedback is welcome.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Rollback with an external transaction manager is now consistent with local transactions.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The 4.1.x &lt;code&gt;amqp-client&lt;/code&gt; library is now the default.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The &lt;code&gt;RabbitTemplate&lt;/code&gt; now has an &lt;code&gt;invoke()&lt;/code&gt; method which allows multiple operations to be performed sequentially on the same channel. This also enables features such as &lt;code&gt;waitForConfirmsOrDie()&lt;/code&gt; provided by the underlying library, when sending multiple messages to the same channel.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;null&lt;/code&gt; message properties are no longer included in &lt;code&gt;toString()&lt;/code&gt; which makes debug logs easier to read.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;@QueueBinding&lt;/code&gt; annotations now support multiple routing keys, and support custom exchange types.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We would like to thank several community members for their ongoing active contributions to the framework; scan &lt;a href="https://github.com/spring-projects/spring-amqp/commits/master"&gt;the commits&lt;/a&gt; and give them some kudos!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We are working towards the M4 release in time for the Spring Boot 2.0 milestone; with the GA in early summer; shortly after the Spring Framework 5.0 release.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For a complete list of changes in 2.0, also see the release notes for &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10450&amp;amp;version=15711"&gt;2.0.0.M1&lt;/a&gt; and &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10450&amp;amp;version=15775"&gt;2.0.0.M2&lt;/a&gt;, as well as &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10450&amp;amp;version=15861"&gt;2.0.0.M3&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-amqp/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/AMQP"&gt;JIRA&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-amqp/blob/master/CONTRIBUTING.adoc"&gt;Contributing&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-amqp"&gt;Help&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-amqp"&gt;Chat&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;</content>
   </entry>
 </feed>

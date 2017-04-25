@@ -1,8 +1,8 @@
 package ua.server.test.it;
 
 import ua.server.App;
-import ua.server.DBConfig;
-import ua.server.model.IPersistable;
+import ua.server.config.DBConfig;
+import ua.server.model.abstr.IEntity;
 import ua.server.rest.AbstractController;
 import ua.server.test.util.ObjectPopulator;
 
@@ -39,7 +39,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {App.class, DBConfig.class})
 @WebAppConfiguration
-public abstract class AbstractIT<T extends IPersistable<ID>, ID extends Serializable> {
+public abstract class AbstractIT<T extends IEntity<ID>, ID extends Serializable> {
 
     private AbstractController<T,ID> controller;
     private JpaRepository<T,ID> repository;

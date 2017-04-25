@@ -9,7 +9,8 @@ import ua.server.repository.LocationRepository;
 @Service
 public class LocationService extends AbstractService<Location, Long> {
 
-    private LocationRepository locationRepository;
+    @SuppressWarnings("unused")
+	private LocationRepository locationRepository;
 
     @Autowired
     public LocationService(LocationRepository locationRepository) {

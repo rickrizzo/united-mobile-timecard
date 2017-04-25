@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
 <aop-project name="SBoot"/>
-<aop-project name="ua-server"/>
-<aop-project name="ua-server66"/>
 </aop-reference-model>

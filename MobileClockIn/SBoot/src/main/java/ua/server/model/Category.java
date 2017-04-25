@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import ua.server.model.abstr.IEntity;
+
 @Entity(name = "CATEGORY")
-public class Category implements IPersistable<Long>{
+public class Category implements IEntity<Long>{
 
     @Id @GeneratedValue
     @Column(name = "CATEGORY_ID")

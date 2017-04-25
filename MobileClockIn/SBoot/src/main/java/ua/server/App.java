@@ -3,6 +3,8 @@ package ua.server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import ua.server.config.DBConfig;
+
 @SpringBootApplication
 public class App {
 
