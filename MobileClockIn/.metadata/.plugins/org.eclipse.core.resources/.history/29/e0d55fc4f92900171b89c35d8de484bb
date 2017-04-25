@@ -1,7 +1,6 @@
 package ua.server.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +23,7 @@ public class LocationController extends AbstractController<Location, Long> {
 		this.service = service;
 	}
 
-	@RequestMapping(value = "request", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "request", method = RequestMethod.POST, consumes = "text/plain")
 	public boolean processRequest(@RequestBody String json) throws Exception {
 		// String json ="{\"uuid\":\"example-uuid\", \"latitude\": 42.735894,
 		// \"longitude\":-73.681501}";
