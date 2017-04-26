@@ -40,7 +40,7 @@ public class LocationController extends AbstractController<Location, Long> {
 
 	@RequestMapping(value = "json", method = RequestMethod.GET)
 	public boolean sampleJson() {
-		String json = "{\"uuid\":\"example-uuid\", \"latitude\": 42.735894, \"longitude\":-73.681501}";
+		String json = "{\"uuid\":\"example-uuid\", \"latitude\": 2.735894, \"longitude\":-73.681501}";
 		String uuid = JsonPath.read(json, "$.uuid");
 		Double latitude = JsonPath.read(json, "$.latitude");
 		Double longitude = JsonPath.read(json, "$.longitude");
