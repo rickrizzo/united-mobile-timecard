@@ -27,7 +27,7 @@ public class LocationController extends AbstractController<Location, Long> {
 
 	@RequestMapping(value = "request", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)	
-	public Boolean processRequest(@RequestBody JSONObject jsonObj) throws Exception {
+	public boolean processRequest(@RequestBody JSONObject jsonObj) throws Exception {
 		// String json ="{\"uuid\":\"example-uuid\", \"latitude\": 42.735894,
 		// \"longitude\":-73.681501}";
 		String json = jsonObj.toJSONString();
