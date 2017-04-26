@@ -1,6 +1,7 @@
 package ua.server.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jayway.jsonpath.JsonPath;
 
+import net.minidev.json.JSONObject;
 import ua.server.model.Location;
 import ua.server.service.LocationService;
 
@@ -23,10 +25,12 @@ public class LocationController extends AbstractController<Location, Long> {
 		this.service = service;
 	}
 
-	@RequestMapping(value = "request", method = RequestMethod.POST, consumes = "text/plain")
-	public boolean processRequest(@RequestBody String json) throws Exception {
+	@RequestMapping(value = "request", method = RequestMethod.POST, 
+			produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)	
+	public Boolean processRequest(@RequestBody JSONObject jsonObj) throws Exception {
 		// String json ="{\"uuid\":\"example-uuid\", \"latitude\": 42.735894,
 		// \"longitude\":-73.681501}";
+		String json = jsonObj.toJSONString();
 		String uuid = JsonPath.read(json, "$.uuid");
 		Double latitude = JsonPath.read(json, "$.latitude");
 		Double longitude = JsonPath.read(json, "$.longitude");
