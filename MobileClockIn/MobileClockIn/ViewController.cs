@@ -14,7 +14,7 @@ namespace MobileClockIn
 {
 	public partial class ViewController : UIViewController
 	{
-		UITableView assignTable, historyTable;
+		UITableView assignTable;
 		UIAlertView lateClockIn, normalClockIn, successMess;
 		String latitude, longitude;
 
@@ -67,7 +67,7 @@ namespace MobileClockIn
 			var width = View.Bounds.Width;
 			var height = View.Bounds.Height;
 			assignTable = new UITableView(new CGRect(0, 150, width, height / 2));
-			historyTable = new UITableView(View.Bounds, UITableViewStyle.Grouped);
+			//historyTable = new UITableView(View.Bounds, UITableViewStyle.Grouped);
 
 			assignTable.AutoresizingMask = UIViewAutoresizing.All;
 			CreateTableItems();
