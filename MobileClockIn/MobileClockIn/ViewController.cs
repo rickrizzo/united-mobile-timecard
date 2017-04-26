@@ -7,6 +7,8 @@ using Security;
 using CoreLocation;
 using UIKit;
 using System.Net;
+using RestSharp;
+using Newtonsoft.Json;
 
 namespace MobileClockIn
 {
@@ -36,6 +38,17 @@ namespace MobileClockIn
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			Manager.LocationUpdated += HandleLocationChanged;
+
+			//UIApplication.Notifications.ObserveDidBecomeActive((sender, args) =>
+			//{
+			//	Manager.LocationUpdated += HandleLocationChanged;
+			//});
+
+			//UIApplication.Notifications.ObserveDidEnterBackground((sender, args) =>
+			//{
+			//	Manager.LocationUpdated -= HandleLocationChanged;
+			//});
 
 			TabBarCenter.Items[1].Image = UIImage.FromBundle("today.png");
 			TabBarCenter.Items[2].Image = UIImage.FromBundle("settings.png");
@@ -63,17 +76,35 @@ namespace MobileClockIn
 
 			ClockInButton.TouchUpInside += (sender, ea) =>
 			{
-				
-				NSIndexPath path = NSIndexPath.FromRowSection(0,0);
+
+				NSIndexPath path = NSIndexPath.FromRowSection(0, 0);
 				UITableViewCell cell = assignTable.Source.GetCell(assignTable, path);
 				var assign = cell.TextLabel.Text.Split(' ');
 				var start = assign[2] + "/2017 " + assign[3];
-				DateTime curAssignSDT = DateTime.ParseExact(start, "MM/dd/yyyy HH:mm",null);
+				DateTime curAssignSDT = DateTime.ParseExact(start, "MM/dd/yyyy HH:mm", null);
 
 				successMess = new UIAlertView();
 				successMess.Title = "You've Successfully clocked in!";
 				successMess.AddButton("Cancel");
 				successMess.AddButton("OK");
+
+				//string postedJson = @"{""uuid"":""" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
+				// + "\",\"latitude\":" + latitude
+				// + ",\"longitude\":" + longitude
+				// //+ ",\"Reason\":" + lateClockIn.GetTextField(0).Text
+				// + "}";
+				var token = new Token();
+				token.UUID = UIDevice.CurrentDevice.IdentifierForVendor.ToString();
+				token.latitude = Convert.ToDouble(latitude);
+				token.longitude = Convert.ToDouble(longitude);
+				var postedJson = JsonConvert.SerializeObject(token);
+				Console.WriteLine("SENT " + postedJson);
+
+				using (WebClient client = new WebClient())
+				{
+					client.Headers[HttpRequestHeader.ContentType] = "application/json";
+					client.UploadString("https://calm-thicket-99131.herokuapp.com/location/request", postedJson.ToString());
+				}
 
 				if (curAssignSDT.CompareTo(nowTime) < 0)
 				{
@@ -93,13 +124,13 @@ namespace MobileClockIn
 						if (ev.ButtonIndex == 1)
 						{
 							// Post Data
-							String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
-											 + "\",\"latitude\":" + latitude
-											 + ",\"longitude\":" + longitude
-											 + ",\"Reason\":" + lateClockIn.GetTextField(0).Text
-											 + "}";
-							(new WebClient()).UploadString("https://calm-thicket-99131.herokuapp.com/location/request", postedJson);
-							Console.Write("SENT " + postedJson);
+							//String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
+							//				 + "\",\"latitude\":" + latitude
+							//				 + ",\"longitude\":" + longitude
+							//				 //+ ",\"Reason\":" + lateClockIn.GetTextField(0).Text
+							//				 + "}";
+							//Console.Write("SENT " + postedJson);
+							//(new WebClient()).UploadString("https://calm-thicket-99131.herokuapp.com/location/request", postedJson);
 							successMess.Show();
 						}
 					};
@@ -117,11 +148,11 @@ namespace MobileClockIn
 						if (ev.ButtonIndex == 1)
 						{
 							// Post Data
-							String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
-											 + "\",\"latitude\":" + latitude
-											 + ",\"longitude\":" + longitude
-											 + "}";
-							(new WebClient()).UploadString("http://requestb.in/1jm1gl31", postedJson);
+							//String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
+							//				 + "\",\"latitude\":" + latitude
+							//				 + ",\"longitude\":" + longitude
+							//				 + "}";
+							// (new WebClient()).UploadString("http://requestb.in/1jm1gl31", postedJson);
 						}
 
 						successMess.Show();
@@ -131,17 +162,6 @@ namespace MobileClockIn
 
 
 			};
-
-
-			UIApplication.Notifications.ObserveDidBecomeActive((sender, args) =>
-			{
-				Manager.LocationUpdated += HandleLocationChanged;
-			});
-
-			UIApplication.Notifications.ObserveDidEnterBackground((sender, args) =>
-			{
-				Manager.LocationUpdated -= HandleLocationChanged;
-			});
 		}
 		#endregion
 
@@ -172,7 +192,7 @@ namespace MobileClockIn
 			CLLocation location = e.Location;
 			longitude = location.Coordinate.Longitude.ToString();
 			latitude = location.Coordinate.Latitude.ToString();
-			Console.Write(longitude.ToString());
+			Console.WriteLine(longitude.ToString());
 		}
 		#endregion
 	}
