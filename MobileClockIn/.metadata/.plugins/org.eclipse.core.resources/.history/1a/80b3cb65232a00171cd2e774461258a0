@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jayway.jsonpath.JsonPath;
 
-import net.minidev.json.JSONObject;
 import ua.server.model.Location;
 import ua.server.service.LocationService;
 
@@ -26,10 +25,9 @@ public class LocationController extends AbstractController<Location, Long> {
 	}
 
 	@RequestMapping(value = "request", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public boolean processRequest(@RequestBody JSONObject jsonObj) throws Exception {
+	public boolean processRequest(@RequestBody String json) throws Exception {
 		// String json ="{\"uuid\":\"example-uuid\", \"latitude\": 42.735894,
 		// \"longitude\":-73.681501}";
-		String json = jsonObj.toJSONString();
 		String uuid = JsonPath.read(json, "$.uuid");
 		Double latitude = JsonPath.read(json, "$.latitude");
 		Double longitude = JsonPath.read(json, "$.longitude");
