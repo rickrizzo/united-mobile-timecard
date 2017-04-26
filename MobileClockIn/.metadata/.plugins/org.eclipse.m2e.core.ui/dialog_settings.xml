@@ -33,6 +33,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\Home\Projects\Capstone\MobileClockIn\ua-server"/>
 			<item value="D:\Home\Projects\Capstone\MobileClockIn\SBoot"/>
 			<item value="C:\Users\David\Desktop\10_03_SpringBootData"/>
 			<item value="C:\Users\David\Desktop\stormpath-spring-boot-jpa-example"/>
