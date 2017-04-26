@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
+<qualifiedTypeNameHistroy/>
+=======
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.hibernate.annotations.Proxy"/>
 <fullyQualifiedTypeName name="javax.persistence.Table"/>
@@ -41,3 +44,4 @@
 <fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
 <fullyQualifiedTypeName name="net.minidev.json.JSONObject"/>
 </qualifiedTypeNameHistroy>
+>>>>>>> server
