@@ -94,7 +94,7 @@ namespace MobileClockIn
 				// //+ ",\"Reason\":" + lateClockIn.GetTextField(0).Text
 				// + "}";
 				var token = new Token();
-				token.UUID = UIDevice.CurrentDevice.IdentifierForVendor.ToString();
+				token.uuid = UIDevice.CurrentDevice.IdentifierForVendor.ToString();
 				token.latitude = Convert.ToDouble(latitude);
 				token.longitude = Convert.ToDouble(longitude);
 				var postedJson = JsonConvert.SerializeObject(token);
@@ -103,7 +103,7 @@ namespace MobileClockIn
 				using (WebClient client = new WebClient())
 				{
 					client.Headers[HttpRequestHeader.ContentType] = "application/json";
-					client.UploadString("https://calm-thicket-99131.herokuapp.com/location/request", postedJson.ToString());
+					Console.WriteLine("RESPONSE: " + client.UploadString("https://calm-thicket-99131.herokuapp.com/location/request", postedJson.ToString()));
 				}
 
 				if (curAssignSDT.CompareTo(nowTime) < 0)
