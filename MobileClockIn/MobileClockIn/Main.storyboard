@@ -87,6 +87,16 @@
                                 </variation>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United Mobile Timecard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="461" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="94" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="466" firstAttribute="width" constant="374"/>
+                                    <constraint id="467" firstAttribute="height" constant="21"/>
+                                </constraints>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <variation key="default">
@@ -126,6 +136,8 @@
                             <constraint id="439" firstItem="8bC-Xf-vdC" firstAttribute="bottom" secondItem="70" secondAttribute="bottom" constant="70"/>
                             <constraint id="441" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="60" secondAttribute="trailing"/>
                             <constraint id="442" firstItem="8bC-Xf-vdC" firstAttribute="bottom" secondItem="60" secondAttribute="bottom"/>
+                            <constraint id="464" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="461" secondAttribute="trailing" constant="20"/>
+                            <constraint id="465" firstItem="461" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="94"/>
                         </constraints>
                     </view>
                     <connections>
@@ -167,33 +179,34 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employee Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="276" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="112" y="113" width="190" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="112" y="65" width="190" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <constraints>
-                                    <constraint id="414" firstAttribute="width" constant="190"/>
-                                    <constraint id="415" firstAttribute="height" constant="21"/>
+                                    <constraint id="482" firstAttribute="width" constant="190"/>
+                                    <constraint id="483" firstAttribute="height" constant="32"/>
                                 </constraints>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="emp@united.com" borderStyle="roundedRect" minimumFontSize="17" id="281" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="115" y="211" width="184" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="20" y="322" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
-                                    <constraint id="428" firstAttribute="width" constant="184"/>
+                                    <constraint id="474" firstAttribute="width" constant="374"/>
                                 </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" minimumFontSize="17" id="282" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="115" y="371" width="184" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="********" borderStyle="roundedRect" minimumFontSize="17" id="282" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="371" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <constraints>
-                                    <constraint id="418" firstAttribute="width" constant="184"/>
+                                    <constraint id="477" firstAttribute="width" constant="374"/>
                                 </constraints>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="288" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="184" y="559" width="46" height="30"/>
+                                <rect key="frame" x="164" y="485" width="87" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -201,19 +214,20 @@
                                     <segue id="365" destination="BYZ-38-t0r" kind="show"/>
                                 </connections>
                                 <constraints>
-                                    <constraint id="421" firstAttribute="width" constant="46"/>
+                                    <constraint id="486" firstAttribute="width" constant="87"/>
+                                    <constraint id="487" firstAttribute="height" constant="30"/>
                                 </constraints>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint id="412" firstItem="273" firstAttribute="trailing" secondItem="276" secondAttribute="trailing" constant="112"/>
-                            <constraint id="413" firstItem="276" firstAttribute="top" secondItem="273" secondAttribute="top" constant="113"/>
-                            <constraint id="416" firstItem="273" firstAttribute="trailing" secondItem="282" secondAttribute="trailing" constant="115"/>
-                            <constraint id="417" firstItem="273" firstAttribute="bottom" secondItem="282" secondAttribute="bottom" constant="335"/>
-                            <constraint id="419" firstItem="273" firstAttribute="trailing" secondItem="288" secondAttribute="trailing" constant="184"/>
-                            <constraint id="420" firstItem="273" firstAttribute="bottom" secondItem="288" secondAttribute="bottom" constant="147"/>
-                            <constraint id="426" firstItem="273" firstAttribute="trailing" secondItem="281" secondAttribute="trailing" constant="115"/>
-                            <constraint id="427" firstItem="281" firstAttribute="top" secondItem="273" secondAttribute="top" constant="211"/>
+                            <constraint id="472" firstItem="273" firstAttribute="trailing" secondItem="281" secondAttribute="trailing" constant="20"/>
+                            <constraint id="473" firstItem="281" firstAttribute="top" secondItem="273" secondAttribute="top" constant="322"/>
+                            <constraint id="475" firstItem="273" firstAttribute="trailing" secondItem="282" secondAttribute="trailing" constant="20"/>
+                            <constraint id="476" firstItem="273" firstAttribute="bottom" secondItem="282" secondAttribute="bottom" constant="335"/>
+                            <constraint id="480" firstItem="273" firstAttribute="trailing" secondItem="276" secondAttribute="trailing" constant="112"/>
+                            <constraint id="481" firstItem="276" firstAttribute="top" secondItem="273" secondAttribute="top" constant="65"/>
+                            <constraint id="484" firstItem="273" firstAttribute="trailing" secondItem="288" secondAttribute="trailing" constant="163"/>
+                            <constraint id="485" firstItem="273" firstAttribute="bottom" secondItem="288" secondAttribute="bottom" constant="221"/>
                         </constraints>
                     </view>
                     <connections/>
