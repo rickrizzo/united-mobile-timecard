@@ -23,6 +23,10 @@ namespace MobileClockIn
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UINavigationItem NavigationHeaderItem { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITabBar TabBarCenter { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -35,6 +39,11 @@ namespace MobileClockIn
             if (NavigationHeader != null) {
                 NavigationHeader.Dispose ();
                 NavigationHeader = null;
+            }
+
+            if (NavigationHeaderItem != null) {
+                NavigationHeaderItem.Dispose ();
+                NavigationHeaderItem = null;
             }
 
             if (TabBarCenter != null) {

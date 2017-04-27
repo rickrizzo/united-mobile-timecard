@@ -90,6 +90,33 @@ namespace MobileClockIn
 			return cell;
 		}
 
+		public override void MoveRow(UITableView tableView, NSIndexPath sourceIndexPath, NSIndexPath destinationIndexPath)
+		{
+			var sourceItem = indexedTableItems[keys[sourceIndexPath.Section]][sourceIndexPath.Row];
+			var targetItem = indexedTableItems[keys[destinationIndexPath.Section]][destinationIndexPath.Row];
+			//var deleteAt = sourceIndexPath.Row;
+			//var insertAt = destinationIndexPath.Row;
+
+			//// are we inserting 
+			//if (destinationIndexPath.Row < sourceIndexPath.Row)
+			//{
+			//	// add one to where we delete, because we're increasing the index by inserting
+			//	deleteAt += 1;
+			//}
+			//else
+			//{
+			//	// add one to where we insert, because we haven't deleted the original yet
+			//	insertAt += 1;
+			//}
+			Console.Write(sourceItem.Heading);
+			Console.Write(targetItem.Heading);
+			indexedTableItems[targetItem.SubHeading].Add(sourceItem);
+			indexedTableItems[sourceItem.SubHeading].RemoveAt(0);
+
+			//tableItems.Insert(insertAt, sourceItem);
+			//tableItems.RemoveAt(deleteAt);
+		}
+
 		public string getCurrentAssignmentStartDateTime()
 		{
 			return indexedTableItems[keys[0]][0].startDateTime;

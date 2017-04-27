@@ -7,7 +7,6 @@ using Security;
 using CoreLocation;
 using UIKit;
 using System.Net;
-using RestSharp;
 using Newtonsoft.Json;
 
 namespace MobileClockIn
@@ -16,7 +15,7 @@ namespace MobileClockIn
 	{
 		UITableView assignTable;
 		UIAlertView lateClockIn, normalClockIn, successMess;
-		String latitude, longitude;
+		String latitude, longitude, status= "False";
 
 		#region Computer Properties
 		public static bool UserInterfaceIdiomIsPhone
@@ -58,6 +57,8 @@ namespace MobileClockIn
 
 			DateTime nowTime = DateTime.Now.ToLocalTime();
 			NavigationHeader.Items[0].Title = String.Format("{0:MMMM dd dddd}", nowTime);
+			NavigationHeaderItem.Title = String.Format("{0:MMMM dd dddd}", nowTime);
+			Add(NavigationHeader);
 
 			TabBarCenter.ItemSelected += (sender, e) =>
 			{
@@ -66,7 +67,7 @@ namespace MobileClockIn
 
 			var width = View.Bounds.Width;
 			var height = View.Bounds.Height;
-			assignTable = new UITableView(new CGRect(0, 150, width, height / 2));
+			assignTable = new UITableView(new CGRect(0, 150, width, height / 2 + 50));
 			//historyTable = new UITableView(View.Bounds, UITableViewStyle.Grouped);
 
 			assignTable.AutoresizingMask = UIViewAutoresizing.All;
@@ -76,91 +77,97 @@ namespace MobileClockIn
 
 			ClockInButton.TouchUpInside += (sender, ea) =>
 			{
-
-				NSIndexPath path = NSIndexPath.FromRowSection(0, 0);
-				UITableViewCell cell = assignTable.Source.GetCell(assignTable, path);
-				var assign = cell.TextLabel.Text.Split(' ');
-				var start = assign[2] + "/2017 " + assign[3];
-				DateTime curAssignSDT = DateTime.ParseExact(start, "MM/dd/yyyy HH:mm", null);
-
-				successMess = new UIAlertView();
-				successMess.Title = "You've Successfully clocked in!";
-				successMess.AddButton("Cancel");
-				successMess.AddButton("OK");
-
-				//string postedJson = @"{""uuid"":""" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
-				// + "\",\"latitude\":" + latitude
-				// + ",\"longitude\":" + longitude
-				// //+ ",\"Reason\":" + lateClockIn.GetTextField(0).Text
-				// + "}";
-				var token = new Token();
-				token.uuid = UIDevice.CurrentDevice.IdentifierForVendor.ToString();
-				token.latitude = Convert.ToDouble(latitude);
-				token.longitude = Convert.ToDouble(longitude);
-				var postedJson = JsonConvert.SerializeObject(token);
-				Console.WriteLine("SENT " + postedJson);
-
-				using (WebClient client = new WebClient())
+				if (status == "False")
 				{
-					client.Headers[HttpRequestHeader.ContentType] = "application/json";
-					Console.WriteLine("RESPONSE: " + client.UploadString("https://calm-thicket-99131.herokuapp.com/location/request", postedJson.ToString()));
-				}
+					NSIndexPath path = NSIndexPath.FromRowSection(0, 0);
+					UITableViewCell cell = assignTable.Source.GetCell(assignTable, path);
+					var assign = cell.TextLabel.Text.Split(' ');
+					var start = assign[2] + "/2017 " + assign[3];
+					DateTime curAssignSDT = DateTime.ParseExact(start, "MM/dd/yyyy HH:mm", null);
 
-				if (curAssignSDT.CompareTo(nowTime) < 0)
-				{
-					//Late Clock in Action
-					lateClockIn = new UIAlertView();
-					lateClockIn.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
-					lateClockIn.Title = "You're late";
-					lateClockIn.AddButton("Cancel");
-					lateClockIn.AddButton("OK");
-					lateClockIn.GetTextField(0).Placeholder = "Provide Reason";
-					lateClockIn.Show();
-					Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
-					Console.WriteLine(longitude + ", " + latitude);
+					successMess = new UIAlertView();
+					successMess.Title = "You've Successfully clocked in!";
+					successMess.AddButton("Cancel");
+					successMess.AddButton("OK");
 
-					lateClockIn.Clicked += (object s, UIButtonEventArgs ev) =>
+					//string postedJson = @"{""uuid"":""" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
+					// + "\",\"latitude\":" + latitude
+					// + ",\"longitude\":" + longitude
+					// //+ ",\"Reason\":" + lateClockIn.GetTextField(0).Text
+					// + "}";
+					var token = new Token();
+					token.uuid = UIDevice.CurrentDevice.IdentifierForVendor.ToString();
+					token.latitude = Convert.ToDouble(latitude);
+					token.longitude = Convert.ToDouble(longitude);
+					var postedJson = JsonConvert.SerializeObject(token);
+					Console.WriteLine("SENT " + postedJson);
+
+					using (WebClient client = new WebClient())
 					{
-						if (ev.ButtonIndex == 1)
+						client.Headers[HttpRequestHeader.ContentType] = "application/json";
+						Console.WriteLine("RESPONSE: " + client.UploadString("https://calm-thicket-99131.herokuapp.com/location/request", postedJson.ToString()));
+					}
+
+					if (curAssignSDT.CompareTo(nowTime) < 0)
+					{
+						//Late Clock in Action
+						lateClockIn = new UIAlertView();
+						lateClockIn.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+						lateClockIn.Title = "You're late";
+						lateClockIn.AddButton("Cancel");
+						lateClockIn.AddButton("OK");
+						lateClockIn.GetTextField(0).Placeholder = "Provide Reason";
+						lateClockIn.Show();
+						Console.WriteLine(UIDevice.CurrentDevice.IdentifierForVendor.ToString());
+						Console.WriteLine(longitude + ", " + latitude);
+
+						lateClockIn.Clicked += (object s, UIButtonEventArgs ev) =>
 						{
-							// Post Data
-							//String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
-							//				 + "\",\"latitude\":" + latitude
-							//				 + ",\"longitude\":" + longitude
-							//				 //+ ",\"Reason\":" + lateClockIn.GetTextField(0).Text
-							//				 + "}";
-							//Console.Write("SENT " + postedJson);
-							//(new WebClient()).UploadString("https://calm-thicket-99131.herokuapp.com/location/request", postedJson);
-							successMess.Show();
-						}
-					};
+							if (ev.ButtonIndex == 1)
+							{
+								// Post Data
+								//String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
+								//				 + "\",\"latitude\":" + latitude
+								//				 + ",\"longitude\":" + longitude
+								//				 //+ ",\"Reason\":" + lateClockIn.GetTextField(0).Text
+								//				 + "}";
+								//Console.Write("SENT " + postedJson);
+								//(new WebClient()).UploadString("https://calm-thicket-99131.herokuapp.com/location/request", postedJson);
+								successMess.Show();
+								ClockInButton.SetTitle("Clock Out", UIControlState.Normal);
+								status = "True";
+							}
+						};
+					}
+					else
+					{
+
+						successMess.Show();
+					}
 				}
-				else
+				else if(status == "True")
 				{
+					NSIndexPath sourcePath = NSIndexPath.FromRowSection(0, 0);
+					NSIndexPath targetPath = NSIndexPath.FromRowSection(0, 2);
+					assignTable.SetEditing (true, true);
+					assignTable.Source.MoveRow(assignTable, sourcePath, targetPath);
+					assignTable.ReloadData();
+					assignTable.SetEditing(false, true);
+					//var assign = cell.TextLabel.Text.Split(' ');
+					//var start = assign[2] + "/2017 " + assign[3];
+					//DateTime curAssignSDT = DateTime.ParseExact(start, "MM/dd/yyyy HH:mm", null);
+
+					successMess = new UIAlertView();
+					successMess.Title = "You've Successfully clocked out!";
+					successMess.AddButton("Cancel");
+					successMess.AddButton("OK");
 
 					successMess.Show();
+					ClockInButton.SetTitle("Clock In", UIControlState.Normal);
+					status = "False";
 
-					//normalClockIn = new UIAlertView();
-					//normalClockIn.Title = "You're on Time";
-					//normalClockIn.AddButton("Cancel");
-					//normalClockIn.AddButton("OK");
-					//normalClockIn.Show();
-
-					//normalClockIn.Clicked += (object s, UIButtonEventArgs ev) =>
-					//{
-					//	if (ev.ButtonIndex == 1)
-					//	{
-					//		// Post Data
-					//		//String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
-					//		//				 + "\",\"latitude\":" + latitude
-					//		//				 + ",\"longitude\":" + longitude
-					//		//				 + "}";
-					//		// (new WebClient()).UploadString("http://requestb.in/1jm1gl31", postedJson);
-					//	}
-
-					//	successMess.Show();
-					//};
 				}
+
 
 
 
