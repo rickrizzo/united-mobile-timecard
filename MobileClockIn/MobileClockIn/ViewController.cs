@@ -137,26 +137,29 @@ namespace MobileClockIn
 				}
 				else
 				{
-					normalClockIn = new UIAlertView();
-					normalClockIn.Title = "You're on Time";
-					normalClockIn.AddButton("Cancel");
-					normalClockIn.AddButton("OK");
-					normalClockIn.Show();
 
-					normalClockIn.Clicked += (object s, UIButtonEventArgs ev) =>
-					{
-						if (ev.ButtonIndex == 1)
-						{
-							// Post Data
-							//String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
-							//				 + "\",\"latitude\":" + latitude
-							//				 + ",\"longitude\":" + longitude
-							//				 + "}";
-							// (new WebClient()).UploadString("http://requestb.in/1jm1gl31", postedJson);
-						}
+					successMess.Show();
 
-						successMess.Show();
-					};
+					//normalClockIn = new UIAlertView();
+					//normalClockIn.Title = "You're on Time";
+					//normalClockIn.AddButton("Cancel");
+					//normalClockIn.AddButton("OK");
+					//normalClockIn.Show();
+
+					//normalClockIn.Clicked += (object s, UIButtonEventArgs ev) =>
+					//{
+					//	if (ev.ButtonIndex == 1)
+					//	{
+					//		// Post Data
+					//		//String postedJson = "{\"uuid\":\"" + UIDevice.CurrentDevice.IdentifierForVendor.ToString()
+					//		//				 + "\",\"latitude\":" + latitude
+					//		//				 + ",\"longitude\":" + longitude
+					//		//				 + "}";
+					//		// (new WebClient()).UploadString("http://requestb.in/1jm1gl31", postedJson);
+					//	}
+
+					//	successMess.Show();
+					//};
 				}
 
 
