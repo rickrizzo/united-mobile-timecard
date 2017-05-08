@@ -1,0 +1,73 @@
+package ua.server.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import org.hibernate.annotations.Proxy;
+
+import ua.server.model.abstr.IEntity;
+
+@Entity
+@Proxy(lazy = true)
+@Table(name = "coordinate")
+public class Coordinate implements IEntity<Long> {
+
+	@Id
+	@GeneratedValue
+	@Column(name = "coordinate_ID")
+	private Long coordinateID;
+
+	@Column(name = "north_lat")
+	private long northLatitude;
+
+	@Column(name = "south_lat")
+	private long southLatitude;
+
+	@Column(name = "west_long")
+	private long westLongtitude;
+
+	@Column(name = "east_long")
+	private long eastLongtitude;
+
+	public Coordinate() {
+
+	}
+
+	public Long getId() {
+		return coordinateID;
+	}
+
+	public long getNorthLatitude() {
+		return northLatitude;
+	}
+
+	public void setNorthLatitude(long northLatitude) {
+		this.northLatitude = northLatitude;
+	}
+
+	public long getSouthLatitude() {
+		return southLatitude;
+	}
+
+	public void setSouthLatitude(long southLatitude) {
+		this.southLatitude = southLatitude;
+	}
+
+	public long getWestLongtitude() {
+		return westLongtitude;
+	}
+
+	public void setWestLongtitude(long westLongtitude) {
+		this.westLongtitude = westLongtitude;
+	}
+
+	public long getEastLongtitude() {
+		return eastLongtitude;
+	}
+
+	public void setEastLongtitude(long eastLongtitude) {
+		this.eastLongtitude = eastLongtitude;
+	}
+}

@@ -1,0 +1,6 @@
+package ua.server.model;
+
+public interface IPersistable<ID> {
+    ID getId();
+    void setId(ID id);
+}

@@ -1,0 +1,20 @@
+package ua.server.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import ua.server.model.Coordinate;
+import ua.server.repository.CoordinateRepository;
+
+@Service
+public class CoordinateService extends AbstractService<Coordinate, Long> {
+
+	@SuppressWarnings("unused")
+	private CoordinateRepository coordinateRepository;
+
+	@Autowired
+	public CoordinateService(CoordinateRepository coordinateRepository) {
+		super(coordinateRepository);
+		this.coordinateRepository = coordinateRepository;
+	}
+}
